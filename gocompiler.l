@@ -1,4 +1,5 @@
 %X COMMENT_BLOCK STRING_STATE STRING_ERROR
+%option yylineno
  //Variables
 newline                     "\n"
 
@@ -13,6 +14,8 @@ RESERVED                    "--"|"++"|"break"|"case"|"chan"|"const"|"continue"|"
 
 %{
     #include "y.tab.h"
+    #include "tree.h"
+    extern struct Node* root;
     #define L_TAG 1
     #define T_TAG 2
     #define NO_TAG 0
@@ -26,202 +29,320 @@ RESERVED                    "--"|"++"|"break"|"case"|"chan"|"const"|"continue"|"
     int semicolon = NO_NEED;
     int in_comment = NO_NEED;
     int string_pos = 0;
-    int in_str = 0;
     int put_semicolon();
     int collumn_no_semicolon();
     char string_buff[10000];
+    int erros = 0;
 %}
+
 %%
 
-{RESERVED}                                              {if(tag == L_TAG) printf("RESERVED(%s)\n", yytext);
-                                                        if(tag == T_TAG) return RESERVED;
+{RESERVED}                                              {
                                                         collumn_no_semicolon();
+                                                        if(tag == L_TAG) printf("RESERVED(%s)\n", yytext);
+                                                        return RESERVED;
                                                         }
-";"                                                     {if(tag == L_TAG)printf("SEMICOLON\n");
-                                                        if(tag == T_TAG){return SEMICOLON;}
+";"                                                     {
                                                         collumn_no_semicolon();
+                                                        if(tag == L_TAG)printf("SEMICOLON\n");
+                                                        return SEMICOLON;
                                                         }
-","                                                     {if(tag == L_TAG)printf("COMMA\n");
-                                                        if(tag == T_TAG){return COMMA;}
+","                                                     {
                                                         collumn_no_semicolon();
+                                                        if(tag == L_TAG)printf("COMMA\n");
+                                                        return COMMA;
                                                         }
-"_"                                                     {if(tag == L_TAG)printf("BLANKID\n");
-                                                        if(tag == T_TAG){return BLANKID;}
+"_"                                                     {
                                                         collumn_no_semicolon();
+                                                        if(tag == L_TAG)printf("BLANKID\n");
+                                                        return BLANKID;
                                                         }
-"*"                                                     {if(tag == L_TAG)printf("STAR\n");
-                                                        if(tag == T_TAG){return STAR;}
+"*"                                                     {
                                                         collumn_no_semicolon();
+                                                        if(tag == L_TAG)printf("STAR\n");
+                                                        return STAR;
                                                         }
-"/"                                                     {if(tag == L_TAG)printf("DIV\n");
-                                                        if(tag == T_TAG){return DIV;}
+"/"                                                     {
                                                         collumn_no_semicolon();
+                                                        if(tag == L_TAG)printf("DIV\n");
+                                                        return DIV;
                                                         }
-"-"                                                     {if(tag == L_TAG)printf("MINUS\n");
-                                                        if(tag == T_TAG){return MINUS;}
+"-"                                                     {
                                                         collumn_no_semicolon();
+                                                        if(tag == L_TAG)printf("MINUS\n");
+                                                        return MINUS;
                                                         }
-"+"                                                     {if(tag == L_TAG)printf("PLUS\n");
-                                                        if(tag == T_TAG){return PLUS;}
+"+"                                                     {
                                                         collumn_no_semicolon();
+                                                        if(tag == L_TAG)printf("PLUS\n");
+                                                        return PLUS;
                                                         }
-"=="                                                    {if(tag == L_TAG)printf("EQ\n");
-                                                        if(tag == T_TAG){return EQ;}
+"=="                                                    {
                                                         collumn_no_semicolon();
+                                                        if(tag == L_TAG)printf("EQ\n");
+                                                        return EQ;
                                                         }
-">="                                                    {if(tag == L_TAG)printf("GE\n");
-                                                        if(tag == T_TAG){return GE;}
+">="                                                    {
                                                         collumn_no_semicolon();
+                                                        if(tag == L_TAG)printf("GE\n");
+                                                        return GE;
                                                         }
-"{"                                                     {if(tag == L_TAG)printf("LBRACE\n");
-                                                        if(tag == T_TAG){return LBRACE;}
+"{"                                                     {
                                                         collumn_no_semicolon();
+                                                        if(tag == L_TAG)printf("LBRACE\n");
+                                                        return LBRACE;
                                                         }
-"<="                                                    {if(tag == L_TAG)printf("LE\n");
-                                                        if(tag == T_TAG){return LE;}
+"<="                                                    {
                                                         collumn_no_semicolon();
+                                                        if(tag == L_TAG)printf("LE\n");
+                                                        return LE;
                                                         }
-"("                                                     {if(tag == L_TAG)printf("LPAR\n");
-                                                        if(tag == T_TAG){return LPAR;}
+"("                                                     {
                                                         collumn_no_semicolon();
+                                                        if(tag == L_TAG)printf("LPAR\n");
+                                                        return LPAR;
                                                         }
-"["                                                     {if(tag == L_TAG){printf("LSQ\n");}
-                                                        if(tag == T_TAG){return LSQ;}
+"["                                                     {
                                                         collumn_no_semicolon();
+                                                        if(tag == L_TAG){printf("LSQ\n");}
+                                                        return LSQ;
                                                         }
-"%"                                                     {if(tag == L_TAG)printf("MOD\n");
-                                                        if(tag == T_TAG){return MOD;}
+"%"                                                     {
                                                         collumn_no_semicolon();
+                                                        if(tag == L_TAG)printf("MOD\n");
+                                                        return MOD;
                                                         }
-"!="                                                    {if(tag == L_TAG)printf("NE\n");
-                                                        if(tag == T_TAG){return NE;}
+"!="                                                    {
                                                         collumn_no_semicolon();
+                                                        if(tag == L_TAG)printf("NE\n");
+                                                        return NE;
                                                         }
-"!"                                                     {if(tag == L_TAG)printf("NOT\n");
-                                                        if(tag == T_TAG){return NOT;}
+"!"                                                     {
                                                         collumn_no_semicolon();
+                                                        if(tag == L_TAG)printf("NOT\n");
+                                                        return NOT;
                                                         }
-"&&"                                                    {if(tag == L_TAG)printf("AND\n");
-                                                        if(tag == T_TAG){return AND;}
+"&&"                                                    {
                                                         collumn_no_semicolon();
+                                                        if(tag == L_TAG)printf("AND\n");
+                                                        return AND;
                                                         }
-"||"                                                    {if(tag == L_TAG)printf("OR\n");
-                                                        if(tag == T_TAG){return OR;}
+"||"                                                    {
                                                         collumn_no_semicolon();
+                                                        if(tag == L_TAG)printf("OR\n");
+                                                        return OR;
                                                         }
-"}"                                                     {if(tag == L_TAG)printf("RBRACE\n");
-                                                        if(tag == T_TAG){return RBRACE;}
+"}"                                                     {
                                                         collumn+=yyleng; 
                                                         semicolon = NEED_S;
+                                                        if(tag == L_TAG)printf("RBRACE\n");
+                                                        return RBRACE;
                                                         }
-")"                                                     {if(tag == L_TAG)printf("RPAR\n");
-                                                        if(tag == T_TAG){return RPAR;}
+")"                                                     {
                                                         collumn+=yyleng; 
                                                         semicolon = NEED_S;
+                                                        if(tag == L_TAG)printf("RPAR\n");
+                                                        return RPAR;
+                                                        
                                                         }
-"]"                                                     {if(tag == L_TAG)printf("RSQ\n");
-                                                        if(tag == T_TAG){return RSQ;}
+"]"                                                     {
                                                         collumn+=yyleng; semicolon = NEED_S;
+                                                        if(tag == L_TAG)printf("RSQ\n");
+                                                        return RSQ;
+                                                        
                                                         }
-"package"                                               {if(tag == L_TAG)printf("PACKAGE\n");
-                                                        if(tag == T_TAG){return PACKAGE;}
+"package"                                               {
                                                         collumn_no_semicolon();
+                                                        if(tag == L_TAG)printf("PACKAGE\n");
+                                                        return PACKAGE;
+
                                                         }
-"return"                                                {if(tag == L_TAG)printf("RETURN\n");
-                                                        if(tag == T_TAG){return RETURN;}
+"return"                                                {
                                                         collumn+=yyleng; 
                                                         semicolon = NEED_S;
+                                                        if(tag == L_TAG)printf("RETURN\n");
+                                                        return RETURN;
                                                         }
-"else"                                                  {if(tag == L_TAG)printf("ELSE\n");
-                                                        if(tag == T_TAG){return ELSE;}
+"else"                                                  {
                                                         collumn_no_semicolon();
+                                                        if(tag == L_TAG)printf("ELSE\n");
+                                                        return ELSE;
                                                         }
-"for"                                                   {if(tag == L_TAG)printf("FOR\n");
-                                                        if(tag == T_TAG){return FOR;}
+"for"                                                   {
                                                         collumn_no_semicolon();
+                                                        if(tag == L_TAG)printf("FOR\n");
+                                                        return FOR;
                                                         }
-"if"                                                    {if(tag == L_TAG)printf("IF\n");
-                                                        if(tag == T_TAG){return IF;}
+"if"                                                    {
                                                         collumn_no_semicolon();
+                                                        if(tag == L_TAG)printf("IF\n");
+                                                        return IF;
                                                         }
-"var"                                                   {if(tag == L_TAG)printf("VAR\n");
-                                                        if(tag == T_TAG){return VAR;}
+"var"                                                   {
                                                         collumn_no_semicolon();
+                                                        if(tag == L_TAG)printf("VAR\n");
+                                                        return VAR;
                                                         }
-"int"                                                   {if(tag == L_TAG)printf("INT\n");
-                                                        if(tag == T_TAG){return INT;}
+"int"                                                   {
                                                         collumn_no_semicolon();
+                                                        if(tag == L_TAG)printf("INT\n");
+                                                        return INT;
                                                         }
-"float32"                                               {if(tag == L_TAG)printf("FLOAT32\n");
-                                                        if(tag == T_TAG){return FLOAT32;}
+"float32"                                               {
                                                         collumn_no_semicolon();
+                                                        if(tag == L_TAG)printf("FLOAT32\n");
+                                                        return FLOAT32;
                                                         }
-"bool"                                                  {if(tag == L_TAG)printf("BOOL\n");
-                                                        if(tag == T_TAG){return BOOL;}
+"bool"                                                  {
                                                         collumn_no_semicolon();
+                                                        if(tag == L_TAG)printf("BOOL\n");
+                                                        return BOOL;
                                                         }
-"string"                                                {if(tag == L_TAG)printf("STRING\n");
-                                                        if(tag == T_TAG){return STRING;}
+"string"                                                {
                                                         collumn_no_semicolon();
+                                                        if(tag == L_TAG)printf("STRING\n");
+                                                        return STRING;
                                                         }
-"fmt.Println"                                           {if(tag == L_TAG)printf("PRINT\n");
-                                                        if(tag == T_TAG){return PRINT;}
+"fmt.Println"                                           {
                                                         collumn_no_semicolon();
+                                                        if(tag == L_TAG)printf("PRINT\n");
+                                                        return PRINT;
                                                         }
-"strconv.Atoi"                                          {if(tag == L_TAG)printf("PARSEINT\n");
-                                                        if(tag == T_TAG){return PARSEINT;}
+"strconv.Atoi"                                          {
                                                         collumn_no_semicolon();
+                                                        if(tag == L_TAG)printf("PARSEINT\n");
+                                                        return PARSEINT;
                                                         }
-"func"                                                  {if(tag == L_TAG)printf("FUNC\n");
-                                                        if(tag == T_TAG){return FUNC;}
+"func"                                                  {
                                                         collumn_no_semicolon();
+                                                        if(tag == L_TAG)printf("FUNC\n");
+                                                        return FUNC;
                                                         }
-"os.Args"                                               {if(tag == L_TAG)printf("CMDARGS\n");
-                                                        if(tag == T_TAG){return CMDARGS;}
+"os.Args"                                               {
                                                         collumn_no_semicolon();
+                                                        if(tag == L_TAG)printf("CMDARGS\n");
+                                                        return CMDARGS;
                                                         }
-"="                                                     {if(tag == L_TAG)printf("ASSIGN\n");
-                                                        if(tag == T_TAG){return ASSIGN;}
+"="                                                     {
                                                         collumn_no_semicolon();
+                                                        if(tag == L_TAG)printf("ASSIGN\n");
+                                                        return ASSIGN;
                                                         }
-">"                                                     {if(tag == L_TAG)printf("GT\n");
-                                                        if(tag == T_TAG){return GT;}
+">"                                                     {
                                                         collumn_no_semicolon();
+                                                        if(tag == L_TAG)printf("GT\n");
+                                                        return GT;
                                                         }
-"<"                                                     {if(tag == L_TAG)printf("LT\n");
-                                                        if(tag == T_TAG){return LT;}
+"<"                                                     {
                                                         collumn_no_semicolon();
+                                                        if(tag == L_TAG)printf("LT\n");
+                                                        return LT;
                                                         }
-"/*"                                {BEGIN COMMENT_BLOCK;temp_collumn= 0 + yyleng;in_comment = NEED_S;temp_line = 0;}
-<COMMENT_BLOCK>"*/"                 {BEGIN 0;line += temp_line;collumn += temp_collumn + yyleng;in_comment = NO_NEED;}
-<COMMENT_BLOCK>"\r\n"|"\n"          {put_semicolon();temp_line++;temp_collumn = 1;temp_collumn += yyleng;}
+"/*"                                {BEGIN COMMENT_BLOCK;
+                                    temp_collumn = 0 + yyleng;
+                                    temp_line = 0;
+                                    }
+<COMMENT_BLOCK>"*/"                 {BEGIN 0;
+                                    line += temp_line;
+                                    collumn += temp_collumn + yyleng;
+                                    }
+<COMMENT_BLOCK>"\r\n"|"\n"          {if(tag == L_TAG)put_semicolon();
+                                    temp_line++;
+                                    temp_collumn = 1;
+                                    temp_collumn += yyleng;
+                                    if(semicolon == NEED_S){
+                                        semicolon = NO_NEED;
+                                        return SEMICOLON;
+                                    }
+                                    }
+<COMMENT_BLOCK><<EOF>>              {printf("Line %d, column %d: unterminated comment\n", line, collumn); return 0;}                                  
 <COMMENT_BLOCK>.                    {temp_collumn+=yyleng;}
 
 
-\"                                                    {in_str = 1;string_pos = 0;BEGIN STRING_STATE;string_buff[string_pos++] = '"';string_buff[string_pos] = '\0';temp_collumn=0 + yyleng;}
-<STRING_STATE>\"                                            {in_str = 0;BEGIN 0; collumn += temp_collumn + yyleng;string_buff[string_pos++] = yytext[0];string_buff[string_pos] = 0;if(tag)printf("STRLIT(%s)\n", string_buff);semicolon = NEED_S;}
-<STRING_STATE>"\r\n"|"\n"|"\r"                                   {in_str = 0;BEGIN 0; string_buff[string_pos] = 0; printf("Line %d, column %d: unterminated string literal\n", line, collumn);collumn_no_semicolon();line++;collumn = 1;}
+\"                                                    {string_pos = 0;BEGIN STRING_STATE;string_buff[string_pos++] = '"';string_buff[string_pos] = '\0';temp_collumn=0 + yyleng;}
+<STRING_STATE>\"                                            {
+                                                            BEGIN 0;
+                                                            collumn += temp_collumn + yyleng;
+                                                            semicolon = NEED_S;
+                                                            string_buff[string_pos++] = '"';
+                                                            string_buff[string_pos] = '\0';
+                                                            if(tag == L_TAG) printf("STRLIT(%s)\n", string_buff);
+                                                           
+                                                            yytext = string_buff;
+                                                            yylval.string = strdup(yytext);
+                                                            return STRLIT;
+                                                            
+                                                            }
+<STRING_STATE>"\r\n"|"\n"|"\r"                              {BEGIN 0; string_buff[string_pos] = 0; printf("Line %d, column %d: unterminated string literal\n", line, collumn);collumn_no_semicolon();line++;collumn = 1;}
 <STRING_STATE>\\\"|\\"n"|\\"f"|\\"r"|\\"t"|\\\\|\\\"        {string_buff[string_pos++] = yytext[0];string_buff[string_pos++] = yytext[1]; string_buff[string_pos] = 0;temp_collumn+= 2;}
-<STRING_STATE>\\.|\\                                          {BEGIN STRING_ERROR;printf("Line %d, column %d: invalid escape sequence (%s)\n", line, collumn + temp_collumn, yytext);temp_collumn+=yyleng;semicolon = NO_NEED;}
+<STRING_STATE>\\.|\\                                        {BEGIN STRING_ERROR;printf("Line %d, column %d: invalid escape sequence (%s)\n", line, collumn + temp_collumn, yytext);temp_collumn+=yyleng;semicolon = NO_NEED;}
+<STRING_STATE><<EOF>>                                       {printf("Line %d, column %d: unterminated string literal\n", line, collumn);BEGIN 0; collumn += temp_collumn + yyleng;}
 <STRING_STATE>.                                             {string_buff[string_pos++] = yytext[0]; string_buff[string_pos] = 0;temp_collumn+= yyleng;}
 
 
-<STRING_ERROR>"\r\n"|"\n" {in_str = 0;BEGIN 0;  string_buff[string_pos] = 0; printf("Line %d, column %d: unterminated string literal\n", line, collumn);collumn_no_semicolon();line++;collumn = 1;}
-<STRING_ERROR>\"          {in_str = 0;BEGIN 0; collumn += temp_collumn + yyleng;string_buff[string_pos++] = yytext[0];}
-<STRING_ERROR>\\\"|\\"n"|\\"f"|\\"r"|\\"t"|\\\\|\\\"        {string_buff[string_pos++] = yytext[0];string_buff[string_pos++] = yytext[1]; string_buff[string_pos] = 0;temp_collumn+= yyleng;}
+<STRING_ERROR>"\r\n"|"\n"                                       {BEGIN 0;  string_buff[string_pos] = 0; printf("Line %d, column %d: unterminated string literal\n", line, collumn);collumn_no_semicolon();line++;collumn = 1;}
+<STRING_ERROR>\"                                                {BEGIN 0; collumn += temp_collumn + yyleng;string_buff[string_pos++] = yytext[0];}
+<STRING_ERROR>\\\"|\\"n"|\\"f"|\\"r"|\\"t"|\\\\|\\\"            {string_buff[string_pos++] = yytext[0];string_buff[string_pos++] = yytext[1]; string_buff[string_pos] = 0;temp_collumn+= yyleng;}
 <STRING_ERROR>\\.|\\                                            {printf("Line %d, column %d: invalid escape sequence (%s)\n", line, collumn + temp_collumn, yytext);temp_collumn+=yyleng;semicolon = NO_NEED;}
-<STRING_ERROR>.                       {temp_collumn+= yyleng;}
+<STRING_ERROR><<EOF>>                                           {printf("Line %d, column %d: unterminated string literal\n", line, collumn);BEGIN 0; collumn += temp_collumn + yyleng;}
+<STRING_ERROR>.                                                 {temp_collumn+= yyleng;}
 
-"0"({octal_digit}*("8"|"9")+{octal_digit}*)+                                                {printf("Line %d, column %d: invalid octal constant (%s)\n", line, collumn, yytext);collumn+=yyleng;}
-{letter}({letter}|{decimal_digit})*                                                         {if(tag)printf("ID(%s)\n", yytext);collumn+=yyleng; semicolon = NEED_S;}
-({decimal_digit}+"."{decimal_digit}*{exponent}?)|{decimal_digit}+{exponent}|({decimal_digit}*"."{decimal_digit}+{exponent}?)                 {if(tag)printf("REALLIT(%s)\n", yytext);collumn+=yyleng; semicolon = NEED_S;}
-{decimal_digit}*|("0"("x"|"X"){hex_digit}+)|("0"{octal_digit}+)                             {if(tag)printf("INTLIT(%s)\n", yytext);collumn+=yyleng; semicolon = NEED_S;}
-
-"\n"|"\r\n"                                                                             {put_semicolon();line++;collumn = 1;}
-"//"(.)*                                                                                  {put_semicolon();collumn_no_semicolon();}
-" "|"\t"                                                                                         {collumn+=yyleng;}
-\\("a"|"b"|"'"|"v")                                             {printf("Line %d, column %d: invalid escape sequence (%s)\n", line, collumn, yytext);semicolon = NO_NEED;}
-.                                                                                           {printf("Line %d, column %d: illegal character (%s)\n", line, collumn, yytext);collumn_no_semicolon();}
+"0"({octal_digit}*("8"|"9")+{octal_digit}*)+                                                {printf("Line %d, column %d: invalid octal constant (%s)\n", line, collumn, yytext);
+                                                                                            collumn+=yyleng;
+                                                                                            }
+{letter}({letter}|{decimal_digit})*                                                         {
+                                                                                            semicolon = NEED_S;
+                                                                                            collumn+=yyleng; 
+                                                                                            if(tag == L_TAG)printf("ID(%s)\n", yytext);
+                                                                                            yylval.string = strdup(yytext);
+                                                                                            return ID;//TODO
+                                                                                            }
+({decimal_digit}+"."{decimal_digit}*{exponent}?)|{decimal_digit}+{exponent}|({decimal_digit}*"."{decimal_digit}+{exponent}?) {
+                                                                                                                            collumn+=yyleng;
+                                                                                                                            semicolon = NEED_S;
+                                                                                                                            if(tag == L_TAG)printf("REALLIT(%s)\n", yytext);
+                                                                                                                            yylval.string = strdup(yytext);
+                                                                                                                            return REALLIT; //TODO
+                                                                                                                            }
+{decimal_digit}*|("0"("x"|"X"){hex_digit}+)|("0"{octal_digit}+)                 {
+                                                                                collumn+=yyleng;
+                                                                                semicolon = NEED_S;
+                                                                                if(tag == L_TAG)printf("INTLIT(%s)\n", yytext);
+                                                                                yylval.string = strdup(yytext);
+                                                                                return INTLIT; //TODO
+                                                                                
+                                                                                }
+<<EOF>>                                                                         {
+                                                                                if(tag == L_TAG) put_semicolon();
+                                                                                if(semicolon == NEED_S) return SEMICOLON; 
+                                                                                return END;
+                                                                                }
+"\n"|"\r\n"                                                                     {
+                                                                                temp_collumn = collumn;
+                                                                                collumn=1;
+                                                                                line++;
+                                                                                if(tag == L_TAG)put_semicolon();
+                                                                                
+                                                                                if(semicolon == NEED_S){
+                                                                                    semicolon = NO_NEED;
+                                                                                    return SEMICOLON;
+                                                                                }
+                                                                                }
+"//".*                                                                         {
+                                                                                collumn+=yyleng;
+                                                                                if(tag == L_TAG)put_semicolon();
+                                                                                if(semicolon == NEED_S){
+                                                                                    semicolon = NO_NEED;
+                                                                                    return SEMICOLON;
+                                                                                }
+                                                                                }
+" "|"\t"                                                                        {collumn+=yyleng;}
+\\("a"|"b"|"'"|"v")                                                             {printf("Line %d, column %d: invalid escape sequence (%s)\n", line, collumn, yytext);
+                                                                                semicolon = NO_NEED;
+                                                                                }
+.                                                                               {printf("Line %d, column %d: illegal character (%s)\n", line, collumn, yytext);
+                                                                                collumn_no_semicolon();
+                                                                                }
 
 %%
 
@@ -235,20 +356,11 @@ int main(int argc, char **argv)
         }
         if(argv[1][0] == '-' && argv[1][1] == 't'){
             tag = T_TAG;
-            yyparse();   
+            yyparse();
+            if(!erros) print_tree(root, 0);
         }
     }
-    else{
-        yylex();
-    }
-    
-    put_semicolon();
-    if(in_comment == 1){
-        printf("Line %d, column %d: unterminated comment\n", line, collumn);
-    }
-    if(in_str == 1){
-        printf("Line %d, column %d: unterminated string literal\n", line, collumn);
-    }
+    else yyparse();
     return 0;
 }
 
@@ -265,14 +377,21 @@ int collumn_no_semicolon(){
 
 
 int put_semicolon(){
-if(tag == L_TAG){
-    if(semicolon == 1){
-        printf("SEMICOLON\n");
+    if(semicolon == NEED_S){
+        if(tag == L_TAG)
+            printf("SEMICOLON\n");
     }
+    semicolon = NO_NEED;
+    return 0;
 }
-else if(tag == T_TAG){
-    return SEMICOLON;
+
+void yyerror (char *s) {
+    erros++;
+    int c = collumn - strlen(yytext);
+    if(yytext[0] == '\n'){
+        printf ("Line %d, column %d: %s: %s\n", line - 1, temp_collumn, s, yytext);
+    }
+    else printf ("Line %d, column %d: %s: %s\n", line, c , s, yytext);
 }
-semicolon = NO_NEED;
-return 0;
-}
+
+

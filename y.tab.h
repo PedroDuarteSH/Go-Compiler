@@ -38,7 +38,7 @@
 # define YY_YY_Y_TAB_H_INCLUDED
 /* Debug traces.  */
 #ifndef YYDEBUG
-# define YYDEBUG 0
+# define YYDEBUG 1
 #endif
 #if YYDEBUG
 extern int yydebug;
@@ -49,96 +49,108 @@ extern int yydebug;
 # define YYTOKENTYPE
   enum yytokentype
   {
-    SEMICOLON = 258,
-    COMMA = 259,
-    BLANKID = 260,
-    STAR = 261,
-    DIV = 262,
-    MINUS = 263,
-    PLUS = 264,
-    EQ = 265,
-    GE = 266,
-    LBRACE = 267,
-    LE = 268,
-    LPAR = 269,
-    LSQ = 270,
-    MOD = 271,
-    NE = 272,
-    NOT = 273,
-    AND = 274,
-    OR = 275,
-    RBRACE = 276,
-    RPAR = 277,
-    RSQ = 278,
-    PACKAGE = 279,
-    RETURN = 280,
-    ELSE = 281,
-    FOR = 282,
-    IF = 283,
-    VAR = 284,
-    INT = 285,
-    FLOAT32 = 286,
-    BOOL = 287,
-    STRING = 288,
-    PRINT = 289,
-    PARSEINT = 290,
-    FUNC = 291,
-    CMDARGS = 292,
-    ASSIGN = 293,
-    GT = 294,
-    LT = 295
+    RESERVED = 258,
+    SEMICOLON = 259,
+    COMMA = 260,
+    BLANKID = 261,
+    STAR = 262,
+    DIV = 263,
+    MINUS = 264,
+    PLUS = 265,
+    EQ = 266,
+    GE = 267,
+    LBRACE = 268,
+    LE = 269,
+    LPAR = 270,
+    LSQ = 271,
+    MOD = 272,
+    NE = 273,
+    NOT = 274,
+    AND = 275,
+    OR = 276,
+    RBRACE = 277,
+    RPAR = 278,
+    RSQ = 279,
+    PACKAGE = 280,
+    RETURN = 281,
+    ELSE = 282,
+    FOR = 283,
+    IF = 284,
+    VAR = 285,
+    INT = 286,
+    FLOAT32 = 287,
+    BOOL = 288,
+    STRING = 289,
+    PRINT = 290,
+    PARSEINT = 291,
+    FUNC = 292,
+    CMDARGS = 293,
+    ASSIGN = 294,
+    GT = 295,
+    LT = 296,
+    ID = 297,
+    STRLIT = 298,
+    REALLIT = 299,
+    INTLIT = 300,
+    END = 301
   };
 #endif
 /* Tokens.  */
-#define SEMICOLON 258
-#define COMMA 259
-#define BLANKID 260
-#define STAR 261
-#define DIV 262
-#define MINUS 263
-#define PLUS 264
-#define EQ 265
-#define GE 266
-#define LBRACE 267
-#define LE 268
-#define LPAR 269
-#define LSQ 270
-#define MOD 271
-#define NE 272
-#define NOT 273
-#define AND 274
-#define OR 275
-#define RBRACE 276
-#define RPAR 277
-#define RSQ 278
-#define PACKAGE 279
-#define RETURN 280
-#define ELSE 281
-#define FOR 282
-#define IF 283
-#define VAR 284
-#define INT 285
-#define FLOAT32 286
-#define BOOL 287
-#define STRING 288
-#define PRINT 289
-#define PARSEINT 290
-#define FUNC 291
-#define CMDARGS 292
-#define ASSIGN 293
-#define GT 294
-#define LT 295
+#define RESERVED 258
+#define SEMICOLON 259
+#define COMMA 260
+#define BLANKID 261
+#define STAR 262
+#define DIV 263
+#define MINUS 264
+#define PLUS 265
+#define EQ 266
+#define GE 267
+#define LBRACE 268
+#define LE 269
+#define LPAR 270
+#define LSQ 271
+#define MOD 272
+#define NE 273
+#define NOT 274
+#define AND 275
+#define OR 276
+#define RBRACE 277
+#define RPAR 278
+#define RSQ 279
+#define PACKAGE 280
+#define RETURN 281
+#define ELSE 282
+#define FOR 283
+#define IF 284
+#define VAR 285
+#define INT 286
+#define FLOAT32 287
+#define BOOL 288
+#define STRING 289
+#define PRINT 290
+#define PARSEINT 291
+#define FUNC 292
+#define CMDARGS 293
+#define ASSIGN 294
+#define GT 295
+#define LT 296
+#define ID 297
+#define STRLIT 298
+#define REALLIT 299
+#define INTLIT 300
+#define END 301
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 48 "gocompiler.y"
+#line 70 "gocompiler.y"
 
-    double value;
-    char* string;
+	struct Node *tree;
+	char *string;
 
-#line 142 "y.tab.h"
+#line 154 "y.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;
