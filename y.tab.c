@@ -75,7 +75,7 @@
     Node *auxNode2;
     int yylex(void);
     void yyerror (char *s);
-    int i = 0;
+    int i =  0;
 
 #line 81 "y.tab.c"
 
@@ -221,7 +221,7 @@ extern int yydebug;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 70 "gocompiler.y"
+#line 68 "gocompiler.y"
 
 	struct Node *tree;
 	char *string;
@@ -545,16 +545,16 @@ union yyalloc
 /* YYFINAL -- State number of the termination state.  */
 #define YYFINAL  4
 /* YYLAST -- Last index in YYTABLE.  */
-#define YYLAST   349
+#define YYLAST   348
 
 /* YYNTOKENS -- Number of terminals.  */
 #define YYNTOKENS  47
 /* YYNNTS -- Number of nonterminals.  */
 #define YYNNTS  18
 /* YYNRULES -- Number of rules.  */
-#define YYNRULES  71
+#define YYNRULES  70
 /* YYNSTATES -- Number of states.  */
-#define YYNSTATES  152
+#define YYNSTATES  151
 
 #define YYUNDEFTOK  2
 #define YYMAXUTOK   301
@@ -606,14 +606,14 @@ static const yytype_int8 yytranslate[] =
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_int16 yyrline[] =
 {
-       0,    76,    76,    79,    80,    82,    85,    98,   111,   114,
-     115,   119,   120,   121,   122,   125,   131,   137,   143,   153,
-     168,   169,   184,   187,   188,   189,   190,   194,   198,   204,
-     209,   214,   218,   219,   220,   221,   222,   223,   224,   225,
-     226,   229,   231,   234,   235,   238,   239,   240,   242,   243,
-     247,   248,   249,   250,   251,   252,   253,   254,   255,   256,
-     257,   258,   259,   260,   261,   262,   263,   264,   265,   266,
-     267,   268
+       0,    74,    74,    77,    78,    80,    83,    96,   109,   112,
+     113,   117,   118,   119,   120,   123,   129,   135,   141,   151,
+     166,   167,   182,   185,   186,   187,   188,   192,   196,   202,
+     207,   212,   216,   217,   218,   219,   220,   221,   222,   223,
+     226,   228,   231,   232,   235,   236,   237,   239,   240,   244,
+     245,   246,   247,   248,   249,   250,   251,   252,   253,   254,
+     255,   256,   257,   258,   259,   260,   261,   262,   263,   264,
+     265
 };
 #endif
 
@@ -653,7 +653,7 @@ static const yytype_int16 yytoknum[] =
 #define yypact_value_is_default(Yyn) \
   ((Yyn) == YYPACT_NINF)
 
-#define YYTABLE_NINF (-43)
+#define YYTABLE_NINF (-42)
 
 #define yytable_value_is_error(Yyn) \
   0
@@ -662,22 +662,22 @@ static const yytype_int16 yytoknum[] =
      STATE-NUM.  */
 static const yytype_int16 yypact[] =
 {
-       0,   -29,    24,    22,   -65,   -65,   -18,   -12,   -14,    29,
-      36,    18,   -65,   -65,    55,   -65,   -65,    57,    11,    46,
-      69,    54,    52,   -65,   -65,   -65,   -65,   -65,    69,   183,
-     -65,    82,   -65,   -65,   -65,    82,   -65,   -65,    63,   -65,
-     -65,     6,    50,   -65,    98,   -65,   133,   119,   133,    95,
-      -1,   108,   110,   -65,   -65,    75,   -65,   -65,   114,    97,
-     133,   133,    71,   133,   106,   -65,   -65,   -65,   273,    98,
-     172,   187,   126,   116,    64,   133,   -65,   -65,   183,    98,
-     -65,    10,    10,   100,   212,   -65,   133,   133,   133,   133,
-     133,   133,   133,   133,   133,   133,   133,   133,   133,   103,
-      98,    98,   107,   237,    92,   121,   -65,   273,   273,   -65,
-     -65,   -65,   -65,   -65,   -65,    10,    10,   148,   148,   148,
-     -65,   148,   308,   290,   148,   148,   -65,   115,   117,   -65,
-     -65,   111,   -65,    61,   -65,   122,   131,   133,   -65,   137,
-       1,   273,    98,   128,   138,   140,   -65,   133,   -65,   255,
-     130,   -65
+     -13,   -18,    23,    24,   -65,   -65,   -12,   -10,   -15,    34,
+      55,    18,   -65,   -65,    54,   -65,   -65,    72,    10,    45,
+      68,    71,    51,   -65,   -65,   -65,   -65,   -65,    68,   182,
+     -65,    82,   -65,   -65,   -65,    82,   -65,   -65,    62,   -65,
+     -65,     6,   -65,   -65,    97,   -65,   132,   118,   132,    94,
+      -2,   107,   109,   -65,   -65,    74,   -65,   113,    96,   132,
+     132,    70,   132,   105,   -65,   -65,   -65,   272,    97,   171,
+     186,   125,   115,    63,   132,   -65,   -65,   182,    97,   -65,
+     -65,   -65,    99,   211,   -65,   132,   132,   132,   132,   132,
+     132,   132,   132,   132,   132,   132,   132,   132,   102,    97,
+      97,   106,   236,    91,   120,   -65,   272,   272,   -65,   -65,
+     -65,   -65,   -65,   -65,     9,     9,   147,   147,   147,   -65,
+     147,   307,   289,   147,   147,   -65,   114,   116,   -65,   -65,
+     110,   -65,    60,   -65,   121,   130,   132,   -65,   136,     1,
+     272,    97,   127,   137,   139,   -65,   132,   -65,   254,   129,
+     -65
 };
 
   /* YYDEFACT[STATE-NUM] -- Default reduction number in state STATE-NUM.
@@ -690,31 +690,31 @@ static const yytype_int8 yydefact[] =
        0,     0,     0,    11,    12,    13,    14,     8,     0,     0,
       23,     0,    17,     7,    10,     0,    15,    20,     0,    18,
       16,     0,    39,    24,     0,    22,    33,     0,     0,     0,
-       0,     0,     0,    36,    35,     0,    19,    40,     0,     0,
-       0,     0,     0,     0,    68,    67,    66,    69,    34,     0,
-       0,     0,     0,     0,     0,     0,    26,    25,     0,     0,
-      28,    64,    65,     0,     0,    63,     0,     0,     0,     0,
+       0,     0,     0,    36,    35,     0,    19,     0,     0,     0,
+       0,     0,     0,    67,    66,    65,    68,    34,     0,     0,
+       0,     0,     0,     0,     0,    26,    25,     0,     0,    28,
+      63,    64,     0,     0,    62,     0,     0,     0,     0,     0,
        0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
-       0,     0,     0,     0,     0,     0,    45,    48,    27,    21,
-      41,    71,    70,    60,    61,    59,    58,    54,    57,    56,
-      62,    55,    51,    50,    53,    52,    32,     0,     0,    37,
-      38,     0,    47,     0,    31,    29,     0,     0,    46,     0,
-       0,    49,     0,     0,     0,     0,    44,     0,    30,     0,
-       0,    43
+       0,     0,     0,     0,     0,    44,    47,    27,    21,    40,
+      70,    69,    59,    60,    58,    57,    53,    56,    55,    61,
+      54,    50,    49,    52,    51,    32,     0,     0,    37,    38,
+       0,    46,     0,    31,    29,     0,     0,    45,     0,     0,
+      48,     0,     0,     0,     0,    43,     0,    30,     0,     0,
+      42
 };
 
   /* YYPGOTO[NTERM-NUM].  */
 static const yytype_int16 yypgoto[] =
 {
-     -65,   -65,   -65,   129,   149,   -65,   -19,   -65,   -65,   -65,
-      40,   -65,   134,   -64,   -65,   -38,   -65,   -40
+     -65,   -65,   -65,   128,   148,   -65,   -19,   -65,   -65,   -65,
+      39,   -65,   133,   -64,   -65,   -38,   -65,   -40
 };
 
   /* YYDEFGOTO[NTERM-NUM].  */
 static const yytype_int16 yydefgoto[] =
 {
       -1,     2,     6,     9,    13,    18,    27,    10,    20,    41,
-      32,    38,    58,    59,    53,    67,   133,    68
+      32,    38,    57,    58,    53,    66,   132,    67
 };
 
   /* YYTABLE[YYPACT[STATE-NUM]] -- What to do in state STATE-NUM.  If
@@ -722,80 +722,80 @@ static const yytype_int16 yydefgoto[] =
      number is the opposite.  If YYTABLE_NINF, syntax error.  */
 static const yytype_int16 yytable[] =
 {
-      54,    31,   143,    11,    73,    99,    54,    70,    71,    35,
-      37,    55,     7,     3,    74,   110,    22,    86,    87,     8,
-      81,    82,    84,    85,     4,     1,     5,    93,    14,    56,
-      12,    54,   103,    15,   107,   108,   127,   128,    75,   144,
-      16,    54,    23,    24,    25,    26,   113,   114,   115,   116,
-     117,   118,   119,   120,   121,   122,   123,   124,   125,   109,
-      12,    21,    54,    54,    42,   105,   137,    43,    36,    28,
-      19,    39,    83,    60,    61,    40,    44,    33,   145,    62,
-      60,    61,    30,    63,   138,    45,    62,   106,    29,    46,
-      63,    47,    48,     7,    34,    30,    57,   141,    49,    42,
-      23,    24,    25,    26,    54,    50,    64,   149,    65,    66,
-      72,    44,    76,    64,    77,    65,    66,    78,    79,    80,
-     -42,    74,   104,   111,    46,   126,    47,    48,    60,    61,
-     129,   131,    69,    49,    62,    60,    61,   134,    63,   135,
-      50,    62,    60,    61,   132,    63,   140,   136,    62,   139,
-     142,   146,    63,   151,   147,    86,    87,    88,    89,     0,
-      17,    64,   148,    65,    66,    93,     0,    51,    64,   102,
-      65,    66,    52,     0,     0,    64,     0,    65,    66,    86,
-      87,    88,    89,    90,    91,   100,    92,     0,     0,    93,
-      94,     0,    95,    96,    86,    87,    88,    89,    90,    91,
-     101,    92,     0,     0,    93,    94,     0,    95,    96,     0,
-       0,     0,    97,    98,    23,    24,    25,    26,     0,    86,
-      87,    88,    89,    90,    91,     0,    92,    97,    98,    93,
-      94,     0,    95,    96,     0,   112,     0,     0,     0,     0,
-       0,     0,     0,     0,    86,    87,    88,    89,    90,    91,
-       0,    92,    97,    98,    93,    94,     0,    95,    96,     0,
-     130,     0,    86,    87,    88,    89,    90,    91,     0,    92,
-       0,     0,    93,    94,     0,    95,    96,    97,    98,   150,
-      86,    87,    88,    89,    90,    91,     0,    92,     0,     0,
-      93,    94,     0,    95,    96,    97,    98,    86,    87,    88,
-      89,    90,    91,     0,    92,     0,     0,    93,    94,     0,
-      95,     0,     0,    97,    98,    86,    87,    88,    89,    90,
-      91,     0,    92,     0,     0,    93,    94,     0,     0,     0,
-      97,    98,     0,     0,     0,     0,     0,     0,     0,     0,
-       0,     0,     0,     0,     0,     0,     0,     0,    97,    98
+      54,    31,   142,    72,    98,    11,    54,    69,    70,    35,
+      37,    55,     1,    73,   109,    22,    85,    86,     7,    80,
+      81,    83,    84,     4,     3,     8,    92,    14,     5,    56,
+      54,   102,    12,   106,   107,   126,   127,    74,    15,   143,
+      54,    23,    24,    25,    26,   112,   113,   114,   115,   116,
+     117,   118,   119,   120,   121,   122,   123,   124,   108,    16,
+      12,    54,    54,    42,   104,   136,    43,    36,    28,    19,
+      39,    82,    59,    60,    40,    44,    21,   144,    61,    59,
+      60,    30,    62,   137,    45,    61,   105,    29,    46,    62,
+      47,    48,     7,    34,    33,    30,   140,    49,    42,    23,
+      24,    25,    26,    54,    50,    63,   148,    64,    65,    71,
+      44,    75,    63,    76,    64,    65,    77,    78,    79,   -41,
+      73,   103,   110,    46,   125,    47,    48,    59,    60,   128,
+     130,    68,    49,    61,    59,    60,   133,    62,   134,    50,
+      61,    59,    60,   131,    62,   139,   135,    61,   138,   141,
+     145,    62,   150,   146,    85,    86,    87,    88,     0,    17,
+      63,   147,    64,    65,    92,     0,    51,    63,   101,    64,
+      65,    52,     0,     0,    63,     0,    64,    65,    85,    86,
+      87,    88,    89,    90,    99,    91,     0,     0,    92,    93,
+       0,    94,    95,    85,    86,    87,    88,    89,    90,   100,
+      91,     0,     0,    92,    93,     0,    94,    95,     0,     0,
+       0,    96,    97,    23,    24,    25,    26,     0,    85,    86,
+      87,    88,    89,    90,     0,    91,    96,    97,    92,    93,
+       0,    94,    95,     0,   111,     0,     0,     0,     0,     0,
+       0,     0,     0,    85,    86,    87,    88,    89,    90,     0,
+      91,    96,    97,    92,    93,     0,    94,    95,     0,   129,
+       0,    85,    86,    87,    88,    89,    90,     0,    91,     0,
+       0,    92,    93,     0,    94,    95,    96,    97,   149,    85,
+      86,    87,    88,    89,    90,     0,    91,     0,     0,    92,
+      93,     0,    94,    95,    96,    97,    85,    86,    87,    88,
+      89,    90,     0,    91,     0,     0,    92,    93,     0,    94,
+       0,     0,    96,    97,    85,    86,    87,    88,    89,    90,
+       0,    91,     0,     0,    92,    93,     0,     0,     0,    96,
+      97,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,    96,    97
 };
 
 static const yytype_int16 yycheck[] =
 {
-      38,    20,     1,    15,     5,    69,    44,    47,    48,    28,
-      29,     5,    30,    42,    15,    79,     5,     7,     8,    37,
-      60,    61,    62,    63,     0,    25,     4,    17,    42,    23,
-      42,    69,    72,     4,    74,    75,   100,   101,    39,    38,
-       4,    79,    31,    32,    33,    34,    86,    87,    88,    89,
-      90,    91,    92,    93,    94,    95,    96,    97,    98,    78,
-      42,     4,   100,   101,     1,     1,     5,     4,    28,    23,
-      15,    31,     1,     9,    10,    35,    13,    23,   142,    15,
-       9,    10,    13,    19,    23,    22,    15,    23,    42,    26,
-      19,    28,    29,    30,    42,    13,    46,   137,    35,     1,
-      31,    32,    33,    34,   142,    42,    42,   147,    44,    45,
-      15,    13,     4,    42,     4,    44,    45,    42,     4,    22,
-      22,    15,     6,    23,    26,    22,    28,    29,     9,    10,
-      23,    39,    13,    35,    15,     9,    10,    22,    19,    22,
-      42,    15,     9,    10,    23,    19,    15,    36,    15,    27,
-      13,    23,    19,    23,    16,     7,     8,     9,    10,    -1,
-      11,    42,    22,    44,    45,    17,    -1,    38,    42,    43,
-      44,    45,    38,    -1,    -1,    42,    -1,    44,    45,     7,
-       8,     9,    10,    11,    12,    13,    14,    -1,    -1,    17,
-      18,    -1,    20,    21,     7,     8,     9,    10,    11,    12,
-      13,    14,    -1,    -1,    17,    18,    -1,    20,    21,    -1,
-      -1,    -1,    40,    41,    31,    32,    33,    34,    -1,     7,
-       8,     9,    10,    11,    12,    -1,    14,    40,    41,    17,
-      18,    -1,    20,    21,    -1,    23,    -1,    -1,    -1,    -1,
-      -1,    -1,    -1,    -1,     7,     8,     9,    10,    11,    12,
-      -1,    14,    40,    41,    17,    18,    -1,    20,    21,    -1,
-      23,    -1,     7,     8,     9,    10,    11,    12,    -1,    14,
-      -1,    -1,    17,    18,    -1,    20,    21,    40,    41,    24,
-       7,     8,     9,    10,    11,    12,    -1,    14,    -1,    -1,
-      17,    18,    -1,    20,    21,    40,    41,     7,     8,     9,
-      10,    11,    12,    -1,    14,    -1,    -1,    17,    18,    -1,
-      20,    -1,    -1,    40,    41,     7,     8,     9,    10,    11,
-      12,    -1,    14,    -1,    -1,    17,    18,    -1,    -1,    -1,
-      40,    41,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,
-      -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    40,    41
+      38,    20,     1,     5,    68,    15,    44,    47,    48,    28,
+      29,     5,    25,    15,    78,     5,     7,     8,    30,    59,
+      60,    61,    62,     0,    42,    37,    17,    42,     4,    23,
+      68,    71,    42,    73,    74,    99,   100,    39,     4,    38,
+      78,    31,    32,    33,    34,    85,    86,    87,    88,    89,
+      90,    91,    92,    93,    94,    95,    96,    97,    77,     4,
+      42,    99,   100,     1,     1,     5,     4,    28,    23,    15,
+      31,     1,     9,    10,    35,    13,     4,   141,    15,     9,
+      10,    13,    19,    23,    22,    15,    23,    42,    26,    19,
+      28,    29,    30,    42,    23,    13,   136,    35,     1,    31,
+      32,    33,    34,   141,    42,    42,   146,    44,    45,    15,
+      13,     4,    42,     4,    44,    45,    42,     4,    22,    22,
+      15,     6,    23,    26,    22,    28,    29,     9,    10,    23,
+      39,    13,    35,    15,     9,    10,    22,    19,    22,    42,
+      15,     9,    10,    23,    19,    15,    36,    15,    27,    13,
+      23,    19,    23,    16,     7,     8,     9,    10,    -1,    11,
+      42,    22,    44,    45,    17,    -1,    38,    42,    43,    44,
+      45,    38,    -1,    -1,    42,    -1,    44,    45,     7,     8,
+       9,    10,    11,    12,    13,    14,    -1,    -1,    17,    18,
+      -1,    20,    21,     7,     8,     9,    10,    11,    12,    13,
+      14,    -1,    -1,    17,    18,    -1,    20,    21,    -1,    -1,
+      -1,    40,    41,    31,    32,    33,    34,    -1,     7,     8,
+       9,    10,    11,    12,    -1,    14,    40,    41,    17,    18,
+      -1,    20,    21,    -1,    23,    -1,    -1,    -1,    -1,    -1,
+      -1,    -1,    -1,     7,     8,     9,    10,    11,    12,    -1,
+      14,    40,    41,    17,    18,    -1,    20,    21,    -1,    23,
+      -1,     7,     8,     9,    10,    11,    12,    -1,    14,    -1,
+      -1,    17,    18,    -1,    20,    21,    40,    41,    24,     7,
+       8,     9,    10,    11,    12,    -1,    14,    -1,    -1,    17,
+      18,    -1,    20,    21,    40,    41,     7,     8,     9,    10,
+      11,    12,    -1,    14,    -1,    -1,    17,    18,    -1,    20,
+      -1,    -1,    40,    41,     7,     8,     9,    10,    11,    12,
+      -1,    14,    -1,    -1,    17,    18,    -1,    -1,    -1,    40,
+      41,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,
+      -1,    -1,    -1,    -1,    -1,    -1,    -1,    40,    41
 };
 
   /* YYSTOS[STATE-NUM] -- The (internal number of the) accessing
@@ -807,17 +807,17 @@ static const yytype_int8 yystos[] =
       55,     4,     5,    31,    32,    33,    34,    53,    23,    42,
       13,    53,    57,    23,    42,    53,    57,    53,    58,    57,
       57,    56,     1,     4,    13,    22,    26,    28,    29,    35,
-      42,    50,    59,    61,    62,     5,    23,    46,    59,    60,
-       9,    10,    15,    19,    42,    44,    45,    62,    64,    13,
-      64,    64,    15,     5,    15,    39,     4,     4,    42,     4,
-      22,    64,    64,     1,    64,    64,     7,     8,     9,    10,
-      11,    12,    14,    17,    18,    20,    21,    40,    41,    60,
-      13,    13,    43,    64,     6,     1,    23,    64,    64,    53,
-      60,    23,    23,    64,    64,    64,    64,    64,    64,    64,
-      64,    64,    64,    64,    64,    64,    22,    60,    60,    23,
-      23,    39,    23,    63,    22,    22,    36,     5,    23,    27,
-      15,    64,    13,     1,    38,    60,    23,    16,    22,    64,
-      24,    23
+      42,    50,    59,    61,    62,     5,    23,    59,    60,     9,
+      10,    15,    19,    42,    44,    45,    62,    64,    13,    64,
+      64,    15,     5,    15,    39,     4,     4,    42,     4,    22,
+      64,    64,     1,    64,    64,     7,     8,     9,    10,    11,
+      12,    14,    17,    18,    20,    21,    40,    41,    60,    13,
+      13,    43,    64,     6,     1,    23,    64,    64,    53,    60,
+      23,    23,    64,    64,    64,    64,    64,    64,    64,    64,
+      64,    64,    64,    64,    64,    22,    60,    60,    23,    23,
+      39,    23,    63,    22,    22,    36,     5,    23,    27,    15,
+      64,    13,     1,    38,    60,    23,    16,    22,    64,    24,
+      23
 };
 
   /* YYR1[YYN] -- Symbol number of symbol that rule YYN derives.  */
@@ -827,10 +827,10 @@ static const yytype_int8 yyr1[] =
       52,    53,    53,    53,    53,    54,    54,    54,    54,    55,
       56,    56,    57,    58,    58,    58,    58,    59,    59,    59,
       59,    59,    59,    59,    59,    59,    59,    59,    59,    59,
-      59,    60,    60,    61,    61,    62,    62,    62,    63,    63,
+      60,    60,    61,    61,    62,    62,    62,    63,    63,    64,
       64,    64,    64,    64,    64,    64,    64,    64,    64,    64,
       64,    64,    64,    64,    64,    64,    64,    64,    64,    64,
-      64,    64
+      64
 };
 
   /* YYR2[YYN] -- Number of symbols on the right hand side of rule YYN.  */
@@ -840,10 +840,10 @@ static const yytype_int8 yyr2[] =
        3,     1,     1,     1,     1,     5,     6,     4,     5,     5,
        0,     4,     3,     0,     2,     3,     3,     3,     3,     5,
        9,     5,     4,     1,     2,     1,     1,     4,     4,     1,
-       2,     3,     0,    11,     8,     3,     5,     4,     0,     3,
+       3,     0,    11,     8,     3,     5,     4,     0,     3,     3,
        3,     3,     3,     3,     3,     3,     3,     3,     3,     3,
-       3,     3,     3,     2,     2,     2,     1,     1,     1,     1,
-       3,     3
+       3,     3,     2,     2,     2,     1,     1,     1,     1,     3,
+       3
 };
 
 
@@ -1539,33 +1539,33 @@ yyreduce:
   switch (yyn)
     {
   case 2:
-#line 76 "gocompiler.y"
-                                           {root = new_node("Program", NULL, (yyvsp[0].tree)); return 0;}
+#line 74 "gocompiler.y"
+                                           {root = new_node("Program", NULL, (yyvsp[0].tree));}
 #line 1545 "y.tab.c"
     break;
 
   case 3:
-#line 79 "gocompiler.y"
+#line 77 "gocompiler.y"
                         {(yyval.tree) = NULL;}
 #line 1551 "y.tab.c"
     break;
 
   case 4:
-#line 80 "gocompiler.y"
+#line 78 "gocompiler.y"
                                          {if((yyvsp[-2].tree) == NULL)(yyval.tree) = (yyvsp[-1].tree);    
                                             else (yyval.tree) = new_brother((yyvsp[-2].tree), (yyvsp[-1].tree));}
 #line 1558 "y.tab.c"
     break;
 
   case 5:
-#line 82 "gocompiler.y"
-                                         {if((yyvsp[-2].tree) == NULL)(yyval.tree) = (yyvsp[-1].tree);    
+#line 80 "gocompiler.y"
+                                         {if((yyvsp[-2].tree) == NULL)(yyval.tree) = (yyvsp[-1].tree);
                                             else (yyval.tree) = new_brother((yyvsp[-2].tree), (yyvsp[-1].tree));}
 #line 1565 "y.tab.c"
     break;
 
   case 6:
-#line 85 "gocompiler.y"
+#line 83 "gocompiler.y"
                             {
                             //main node
                             auxNode = new_node("VarDecl", NULL, (yyvsp[0].tree));
@@ -1583,7 +1583,7 @@ yyreduce:
     break;
 
   case 7:
-#line 98 "gocompiler.y"
+#line 96 "gocompiler.y"
                                   {auxNode = new_node("VarDecl", NULL, (yyvsp[-2].tree));
                                     auxNode2 = (yyvsp[-2].tree)->brother;
                                     Node *next = auxNode2;
@@ -1599,7 +1599,7 @@ yyreduce:
     break;
 
   case 8:
-#line 111 "gocompiler.y"
+#line 109 "gocompiler.y"
                             {
                             (yyval.tree) = new_brother((yyvsp[0].tree), new_brother(new_node("Id", (yyvsp[-2].string), NULL), (yyvsp[-1].tree)));
                             }
@@ -1607,44 +1607,44 @@ yyreduce:
     break;
 
   case 9:
-#line 114 "gocompiler.y"
+#line 112 "gocompiler.y"
                    {(yyval.tree) = NULL;}
 #line 1613 "y.tab.c"
     break;
 
   case 10:
-#line 115 "gocompiler.y"
+#line 113 "gocompiler.y"
                     {if((yyvsp[-2].tree) == NULL)(yyval.tree) = new_brother(new_node("Id", (yyvsp[0].string), NULL), NULL);
                     else (yyval.tree) = new_brother((yyvsp[-2].tree), new_node("Id", (yyvsp[0].string), NULL));}
 #line 1620 "y.tab.c"
     break;
 
   case 11:
-#line 119 "gocompiler.y"
+#line 117 "gocompiler.y"
           {(yyval.tree)=new_node("Int", NULL, NULL);}
 #line 1626 "y.tab.c"
     break;
 
   case 12:
-#line 120 "gocompiler.y"
+#line 118 "gocompiler.y"
           {(yyval.tree)=new_node("Float32", NULL, NULL);}
 #line 1632 "y.tab.c"
     break;
 
   case 13:
-#line 121 "gocompiler.y"
+#line 119 "gocompiler.y"
        {(yyval.tree)=new_node("Bool", NULL, NULL);}
 #line 1638 "y.tab.c"
     break;
 
   case 14:
-#line 122 "gocompiler.y"
+#line 120 "gocompiler.y"
          {(yyval.tree)=new_node("String", NULL, NULL);}
 #line 1644 "y.tab.c"
     break;
 
   case 15:
-#line 125 "gocompiler.y"
+#line 123 "gocompiler.y"
                                             {
                                             auxNode = new_node("FuncHeader", NULL, auxNode2 = new_node("Id", (yyvsp[-3].string), NULL));
                                             new_brother(auxNode2, new_node("FuncParams", NULL, NULL));
@@ -1655,7 +1655,7 @@ yyreduce:
     break;
 
   case 16:
-#line 131 "gocompiler.y"
+#line 129 "gocompiler.y"
                                     {
                                     auxNode = new_node("FuncHeader", NULL, auxNode2 = new_node("Id", (yyvsp[-4].string), NULL));
                                     new_brother(auxNode2, (yyvsp[-1].tree));
@@ -1666,7 +1666,7 @@ yyreduce:
     break;
 
   case 17:
-#line 137 "gocompiler.y"
+#line 135 "gocompiler.y"
                                 {
                                 auxNode = new_node("FuncHeader", NULL, auxNode2 = new_node("Id", (yyvsp[-2].string), NULL));
                                 new_brother(auxNode2, new_node("FuncParams", NULL, (yyvsp[-1].tree)));
@@ -1677,7 +1677,7 @@ yyreduce:
     break;
 
   case 18:
-#line 143 "gocompiler.y"
+#line 141 "gocompiler.y"
                                    {auxNode = new_node("FuncHeader", NULL, auxNode2 = new_node("Id", (yyvsp[-3].string), NULL));
                                     new_brother(auxNode2, (yyvsp[-1].tree));
                                     new_brother(auxNode2, new_node("FuncParams", NULL, (yyvsp[-2].tree)));
@@ -1689,7 +1689,7 @@ yyreduce:
     break;
 
   case 19:
-#line 153 "gocompiler.y"
+#line 151 "gocompiler.y"
                                            {
                             auxNode2 = new_node("Id", (yyvsp[-3].string), NULL);
                             auxNode = new_node("ParamDecl", NULL, new_brother((yyvsp[-2].tree), auxNode2));
@@ -1708,13 +1708,13 @@ yyreduce:
     break;
 
   case 20:
-#line 168 "gocompiler.y"
+#line 166 "gocompiler.y"
                          {(yyval.tree) = NULL;}
 #line 1714 "y.tab.c"
     break;
 
   case 21:
-#line 169 "gocompiler.y"
+#line 167 "gocompiler.y"
                                {
                                 if((yyvsp[-3].tree) != NULL){
                                     auxNode = new_node("Id", (yyvsp[-1].string), NULL);
@@ -1732,37 +1732,37 @@ yyreduce:
     break;
 
   case 22:
-#line 184 "gocompiler.y"
+#line 182 "gocompiler.y"
                                          {(yyval.tree)=new_node("FuncBody", NULL, (yyvsp[-1].tree));}
 #line 1738 "y.tab.c"
     break;
 
   case 23:
-#line 187 "gocompiler.y"
+#line 185 "gocompiler.y"
                                 {(yyval.tree) = NULL;}
 #line 1744 "y.tab.c"
     break;
 
   case 24:
-#line 188 "gocompiler.y"
+#line 186 "gocompiler.y"
                               {(yyval.tree)=(yyvsp[-1].tree);}
 #line 1750 "y.tab.c"
     break;
 
   case 25:
-#line 189 "gocompiler.y"
+#line 187 "gocompiler.y"
                                            {if((yyvsp[-2].tree) != NULL) new_brother((yyvsp[-2].tree), (yyvsp[-1].tree));else (yyval.tree) = (yyvsp[-1].tree);}
 #line 1756 "y.tab.c"
     break;
 
   case 26:
-#line 190 "gocompiler.y"
+#line 188 "gocompiler.y"
                                               {if((yyvsp[-2].tree) != NULL) new_brother((yyvsp[-2].tree), (yyvsp[-1].tree)); else (yyval.tree) = (yyvsp[-1].tree);}
 #line 1762 "y.tab.c"
     break;
 
   case 27:
-#line 194 "gocompiler.y"
+#line 192 "gocompiler.y"
                           {
                             (yyval.tree) = new_node("Assign", NULL, auxNode=new_node("Id", (yyvsp[-2].string), NULL)); 
                             new_brother(auxNode, (yyvsp[0].tree));
@@ -1771,7 +1771,7 @@ yyreduce:
     break;
 
   case 28:
-#line 198 "gocompiler.y"
+#line 196 "gocompiler.y"
                            {
                             if((yyvsp[-1].tree) != NULL)
                                 if((yyvsp[-1].tree)->brother != NULL)(yyval.tree)=new_node("Block", NULL, (yyvsp[-1].tree));
@@ -1782,7 +1782,7 @@ yyreduce:
     break;
 
   case 29:
-#line 204 "gocompiler.y"
+#line 202 "gocompiler.y"
                                    {
                                     (yyval.tree) = new_node("If", NULL, (yyvsp[-3].tree)); 
                                     new_brother((yyvsp[-3].tree), new_node("Block", NULL, (yyvsp[-1].tree)));
@@ -1792,7 +1792,7 @@ yyreduce:
     break;
 
   case 30:
-#line 209 "gocompiler.y"
+#line 207 "gocompiler.y"
                                                                  {
                                     (yyval.tree) = new_node("If", NULL, (yyvsp[-7].tree));
                                     new_brother((yyvsp[-7].tree), new_node("Block", NULL, (yyvsp[-5].tree)));
@@ -1802,7 +1802,7 @@ yyreduce:
     break;
 
   case 31:
-#line 214 "gocompiler.y"
+#line 212 "gocompiler.y"
                                     {
                                     new_brother((yyvsp[-3].tree), new_node("Block", NULL, (yyvsp[-1].tree))); 
                                     (yyval.tree) = new_node("For", NULL, (yyvsp[-3].tree)); 
@@ -1811,249 +1811,243 @@ yyreduce:
     break;
 
   case 32:
-#line 218 "gocompiler.y"
+#line 216 "gocompiler.y"
                                {(yyval.tree) = new_node("For", NULL, new_node("Block", NULL, (yyvsp[-1].tree)));}
 #line 1817 "y.tab.c"
     break;
 
   case 33:
-#line 219 "gocompiler.y"
+#line 217 "gocompiler.y"
          {(yyval.tree) = new_node("Return", NULL, NULL);}
 #line 1823 "y.tab.c"
     break;
 
   case 34:
-#line 220 "gocompiler.y"
+#line 218 "gocompiler.y"
               {(yyval.tree) = new_node("Return", NULL, (yyvsp[0].tree));}
 #line 1829 "y.tab.c"
     break;
 
   case 35:
-#line 221 "gocompiler.y"
+#line 219 "gocompiler.y"
                  {(yyval.tree) = new_node("Call", NULL, (yyvsp[0].tree));}
 #line 1835 "y.tab.c"
     break;
 
   case 36:
-#line 222 "gocompiler.y"
+#line 220 "gocompiler.y"
             {(yyval.tree) = new_node("ParseArgs", NULL, (yyvsp[0].tree));}
 #line 1841 "y.tab.c"
     break;
 
   case 37:
-#line 223 "gocompiler.y"
+#line 221 "gocompiler.y"
                          {(yyval.tree) = new_node("Print", NULL, new_node("StrLit", (yyvsp[-1].string), NULL));}
 #line 1847 "y.tab.c"
     break;
 
   case 38:
-#line 224 "gocompiler.y"
+#line 222 "gocompiler.y"
                        {(yyval.tree) = new_node("Print", NULL, (yyvsp[-1].tree));}
 #line 1853 "y.tab.c"
     break;
 
   case 39:
-#line 225 "gocompiler.y"
+#line 223 "gocompiler.y"
         {(yyval.tree) = NULL;}
 #line 1859 "y.tab.c"
     break;
 
   case 40:
 #line 226 "gocompiler.y"
-             {(yyval.tree) = NULL;return 0;}
-#line 1865 "y.tab.c"
+                                           {if((yyvsp[-2].tree) == NULL)(yyval.tree) = (yyvsp[0].tree);
+                                            else (yyval.tree) = new_brother((yyvsp[-2].tree), (yyvsp[0].tree));}
+#line 1866 "y.tab.c"
     break;
 
   case 41:
-#line 229 "gocompiler.y"
-                                           {if((yyvsp[-2].tree) == NULL)(yyval.tree) = (yyvsp[0].tree);
-                                            else (yyval.tree) = new_brother((yyvsp[-2].tree), (yyvsp[0].tree));}
+#line 228 "gocompiler.y"
+            {(yyval.tree) = NULL;}
 #line 1872 "y.tab.c"
     break;
 
   case 42:
 #line 231 "gocompiler.y"
-            {(yyval.tree) = NULL;}
+                                                                           {(yyval.tree) = new_brother(new_node("Id", (yyvsp[-10].string), NULL),(yyvsp[-2].tree));}
 #line 1878 "y.tab.c"
     break;
 
   case 43:
-#line 234 "gocompiler.y"
-                                                                           {(yyval.tree) = new_brother(new_node("Id", (yyvsp[-10].string), NULL),(yyvsp[-2].tree));}
+#line 232 "gocompiler.y"
+                                                   {(yyval.tree) = NULL;}
 #line 1884 "y.tab.c"
     break;
 
   case 44:
 #line 235 "gocompiler.y"
-                                                   {(yyval.tree) = NULL;}
+                             {(yyval.tree) = new_node("Id", (yyvsp[-2].string), NULL);}
 #line 1890 "y.tab.c"
     break;
 
   case 45:
-#line 238 "gocompiler.y"
-                             {(yyval.tree) = new_node("Id", (yyvsp[-2].string), NULL);}
+#line 236 "gocompiler.y"
+                               {(yyval.tree) = new_brother(new_node("Id", (yyvsp[-4].string), NULL), new_brother((yyvsp[-2].tree), (yyvsp[-1].tree)));}
 #line 1896 "y.tab.c"
     break;
 
   case 46:
-#line 239 "gocompiler.y"
-                               {(yyval.tree) = new_brother(new_node("Id", (yyvsp[-4].string), NULL), new_brother((yyvsp[-2].tree), (yyvsp[-1].tree)));}
+#line 237 "gocompiler.y"
+                     {(yyval.tree) = NULL;}
 #line 1902 "y.tab.c"
     break;
 
   case 47:
-#line 240 "gocompiler.y"
-                     {(yyval.tree) = NULL;}
+#line 239 "gocompiler.y"
+                      {(yyval.tree) = NULL;}
 #line 1908 "y.tab.c"
     break;
 
   case 48:
-#line 242 "gocompiler.y"
-                      {(yyval.tree) = NULL;}
-#line 1914 "y.tab.c"
+#line 240 "gocompiler.y"
+                       {if((yyvsp[-2].tree) != NULL)(yyval.tree) = new_brother((yyvsp[-2].tree), (yyvsp[0].tree));
+                        else (yyval.tree) = (yyvsp[0].tree);}
+#line 1915 "y.tab.c"
     break;
 
   case 49:
-#line 243 "gocompiler.y"
-                       {if((yyvsp[-2].tree) != NULL)(yyval.tree) = new_brother((yyvsp[-2].tree), (yyvsp[0].tree));
-                        else (yyval.tree) = (yyvsp[0].tree);}
+#line 244 "gocompiler.y"
+                                {(yyval.tree) = new_node("Or", NULL, (yyvsp[-2].tree));     new_brother((yyvsp[-2].tree), (yyvsp[0].tree));}
 #line 1921 "y.tab.c"
     break;
 
   case 50:
-#line 247 "gocompiler.y"
-                    {(yyval.tree) = new_node("Or", NULL, (yyvsp[-2].tree)); new_brother((yyvsp[-2].tree), (yyvsp[0].tree));}
+#line 245 "gocompiler.y"
+                                {(yyval.tree) = new_node("And", NULL, (yyvsp[-2].tree));    new_brother((yyvsp[-2].tree), (yyvsp[0].tree));}
 #line 1927 "y.tab.c"
     break;
 
   case 51:
-#line 248 "gocompiler.y"
-                {(yyval.tree) = new_node("And", NULL, (yyvsp[-2].tree)); new_brother((yyvsp[-2].tree), (yyvsp[0].tree));}
+#line 246 "gocompiler.y"
+                                {(yyval.tree) = new_node("Lt", NULL, (yyvsp[-2].tree));     new_brother((yyvsp[-2].tree), (yyvsp[0].tree));}
 #line 1933 "y.tab.c"
     break;
 
   case 52:
-#line 249 "gocompiler.y"
-                {(yyval.tree) = new_node("Lt", NULL, (yyvsp[-2].tree)); new_brother((yyvsp[-2].tree), (yyvsp[0].tree));}
+#line 247 "gocompiler.y"
+                                                {(yyval.tree) = new_node("Gt", NULL, (yyvsp[-2].tree));     new_brother((yyvsp[-2].tree), (yyvsp[0].tree));}
 #line 1939 "y.tab.c"
     break;
 
   case 53:
-#line 250 "gocompiler.y"
-                                                {(yyval.tree) = new_node("Gt", NULL, (yyvsp[-2].tree)); new_brother((yyvsp[-2].tree), (yyvsp[0].tree));}
+#line 248 "gocompiler.y"
+                                                {(yyval.tree) = new_node("Eq", NULL, (yyvsp[-2].tree));     new_brother((yyvsp[-2].tree), (yyvsp[0].tree));}
 #line 1945 "y.tab.c"
     break;
 
   case 54:
-#line 251 "gocompiler.y"
-                                                {(yyval.tree) = new_node("Eq", NULL, (yyvsp[-2].tree)); new_brother((yyvsp[-2].tree), (yyvsp[0].tree));}
+#line 249 "gocompiler.y"
+                                                {(yyval.tree) = new_node("Ne", NULL, (yyvsp[-2].tree));     new_brother((yyvsp[-2].tree), (yyvsp[0].tree));}
 #line 1951 "y.tab.c"
     break;
 
   case 55:
-#line 252 "gocompiler.y"
-                                                {(yyval.tree) = new_node("Ne", NULL, (yyvsp[-2].tree)); new_brother((yyvsp[-2].tree), (yyvsp[0].tree));}
+#line 250 "gocompiler.y"
+                                                {(yyval.tree) = new_node("Le", NULL, (yyvsp[-2].tree));     new_brother((yyvsp[-2].tree), (yyvsp[0].tree));}
 #line 1957 "y.tab.c"
     break;
 
   case 56:
-#line 253 "gocompiler.y"
-                                                {(yyval.tree) = new_node("Le", NULL, (yyvsp[-2].tree)); new_brother((yyvsp[-2].tree), (yyvsp[0].tree));}
+#line 251 "gocompiler.y"
+                                                {(yyval.tree) = new_node("Ge", NULL, (yyvsp[-2].tree));     new_brother((yyvsp[-2].tree), (yyvsp[0].tree));}
 #line 1963 "y.tab.c"
     break;
 
   case 57:
-#line 254 "gocompiler.y"
-                                                {(yyval.tree) = new_node("Ge", NULL, (yyvsp[-2].tree)); new_brother((yyvsp[-2].tree), (yyvsp[0].tree));}
+#line 252 "gocompiler.y"
+                                                {(yyval.tree) = new_node("Add", NULL, (yyvsp[-2].tree));    new_brother((yyvsp[-2].tree), (yyvsp[0].tree));}
 #line 1969 "y.tab.c"
     break;
 
   case 58:
-#line 255 "gocompiler.y"
-                                                {(yyval.tree) = new_node("Add", NULL, (yyvsp[-2].tree)); new_brother((yyvsp[-2].tree), (yyvsp[0].tree));}
+#line 253 "gocompiler.y"
+                                                {(yyval.tree) = new_node("Sub", NULL, (yyvsp[-2].tree));    new_brother((yyvsp[-2].tree), (yyvsp[0].tree));}
 #line 1975 "y.tab.c"
     break;
 
   case 59:
-#line 256 "gocompiler.y"
-                                                {(yyval.tree) = new_node("Sub", NULL, (yyvsp[-2].tree)); new_brother((yyvsp[-2].tree), (yyvsp[0].tree));}
+#line 254 "gocompiler.y"
+                                                {(yyval.tree) = new_node("Mul", NULL, (yyvsp[-2].tree));    new_brother((yyvsp[-2].tree), (yyvsp[0].tree));}
 #line 1981 "y.tab.c"
     break;
 
   case 60:
-#line 257 "gocompiler.y"
-                                                {(yyval.tree) = new_node("Mul", NULL, (yyvsp[-2].tree)); new_brother((yyvsp[-2].tree), (yyvsp[0].tree));}
+#line 255 "gocompiler.y"
+                                                {(yyval.tree) = new_node("Div", NULL, (yyvsp[-2].tree));    new_brother((yyvsp[-2].tree), (yyvsp[0].tree));}
 #line 1987 "y.tab.c"
     break;
 
   case 61:
-#line 258 "gocompiler.y"
-                                                {(yyval.tree) = new_node("Div", NULL, (yyvsp[-2].tree)); new_brother((yyvsp[-2].tree), (yyvsp[0].tree));}
+#line 256 "gocompiler.y"
+                                                {(yyval.tree) = new_node("Mod", NULL, (yyvsp[-2].tree));    new_brother((yyvsp[-2].tree), (yyvsp[0].tree));}
 #line 1993 "y.tab.c"
     break;
 
   case 62:
-#line 259 "gocompiler.y"
-                                                {(yyval.tree) = new_node("Mod", NULL, (yyvsp[-2].tree)); new_brother((yyvsp[-2].tree), (yyvsp[0].tree));}
+#line 257 "gocompiler.y"
+                                                        {(yyval.tree) = new_node("Not", NULL, (yyvsp[0].tree));}
 #line 1999 "y.tab.c"
     break;
 
   case 63:
-#line 260 "gocompiler.y"
-                                                        {(yyval.tree) = new_node("Not", NULL, (yyvsp[0].tree));}
+#line 258 "gocompiler.y"
+                                        {(yyval.tree) = new_node("Minus", NULL, (yyvsp[0].tree));}
 #line 2005 "y.tab.c"
     break;
 
   case 64:
-#line 261 "gocompiler.y"
-                                {(yyval.tree) = new_node("Minus", NULL, (yyvsp[0].tree));}
+#line 259 "gocompiler.y"
+                                        {(yyval.tree) = new_node("Plus", NULL, (yyvsp[0].tree));}
 #line 2011 "y.tab.c"
     break;
 
   case 65:
-#line 262 "gocompiler.y"
-                                {(yyval.tree) = new_node("Plus", NULL, (yyvsp[0].tree));}
+#line 260 "gocompiler.y"
+                                {(yyval.tree) = new_node("IntLit", (yyvsp[0].string), NULL);}
 #line 2017 "y.tab.c"
     break;
 
   case 66:
-#line 263 "gocompiler.y"
-        {(yyval.tree) = new_node("IntLit", (yyvsp[0].string), NULL);}
+#line 261 "gocompiler.y"
+                                {(yyval.tree) = new_node("RealLit", (yyvsp[0].string), NULL);}
 #line 2023 "y.tab.c"
     break;
 
   case 67:
-#line 264 "gocompiler.y"
-         {(yyval.tree) = new_node("RealLit", (yyvsp[0].string), NULL);}
+#line 262 "gocompiler.y"
+                                {(yyval.tree) = new_node("Id", (yyvsp[0].string), NULL);}
 #line 2029 "y.tab.c"
     break;
 
   case 68:
-#line 265 "gocompiler.y"
-    {(yyval.tree) = new_node("Id", (yyvsp[0].string), NULL);}
+#line 263 "gocompiler.y"
+                                {(yyval.tree) = new_node("Call", NULL, (yyvsp[0].tree));}
 #line 2035 "y.tab.c"
     break;
 
   case 69:
-#line 266 "gocompiler.y"
-                {(yyval.tree) = new_node("Call", NULL, (yyvsp[0].tree));}
+#line 264 "gocompiler.y"
+                                {(yyval.tree) = (yyvsp[-1].tree);}
 #line 2041 "y.tab.c"
     break;
 
   case 70:
-#line 267 "gocompiler.y"
-                {(yyval.tree) = (yyvsp[-1].tree);}
+#line 265 "gocompiler.y"
+                                {(yyval.tree) = NULL;}
 #line 2047 "y.tab.c"
     break;
 
-  case 71:
-#line 268 "gocompiler.y"
-                 {(yyval.tree) = NULL;}
-#line 2053 "y.tab.c"
-    break;
 
-
-#line 2057 "y.tab.c"
+#line 2051 "y.tab.c"
 
       default: break;
     }
@@ -2285,6 +2279,6 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 272 "gocompiler.y"
+#line 269 "gocompiler.y"
 
 

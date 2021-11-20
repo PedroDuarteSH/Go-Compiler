@@ -6,7 +6,7 @@
     Node *auxNode2;
     int yylex(void);
     void yyerror (char *s);
-    int i = 0;
+    int i =  0;
 %}
 //Reserved words
 %token RESERVED
@@ -57,8 +57,6 @@
 %token END
 
 //Variables
-
-%left COMMA
 %right ASSIGN
 %left OR
 %left AND
@@ -73,13 +71,13 @@
 }
 
 %%
-program: PACKAGE ID SEMICOLON declarations {root = new_node("Program", NULL, $4); return 0;}
+program: PACKAGE ID SEMICOLON declarations {root = new_node("Program", NULL, $4);}
 ;
 
 declarations: /*empty*/ {$$ = NULL;}
 | declarations varDeclaration SEMICOLON  {if($1 == NULL)$$ = $2;    
                                             else $$ = new_brother($1, $2);}
-| declarations funcDeclaration SEMICOLON {if($1 == NULL)$$ = $2;    
+| declarations funcDeclaration SEMICOLON {if($1 == NULL)$$ = $2;
                                             else $$ = new_brother($1, $2);}
 ;
 varDeclaration: VAR varSpec {
@@ -223,7 +221,6 @@ statement: ID ASSIGN expr {
 | PRINT LPAR STRLIT RPAR {$$ = new_node("Print", NULL, new_node("StrLit", $3, NULL));}
 | PRINT LPAR expr RPAR {$$ = new_node("Print", NULL, $3);}
 | error {$$ = NULL;}
-| error END  {$$ = NULL;return 0;}
 ;
 
 state_SEMI: statement SEMICOLON state_SEMI {if($1 == NULL)$$ = $3;
@@ -232,40 +229,40 @@ state_SEMI: statement SEMICOLON state_SEMI {if($1 == NULL)$$ = $3;
 ;
 
 parseArgs: ID COMMA BLANKID ASSIGN PARSEINT LPAR CMDARGS LSQ expr RSQ RPAR {$$ = new_brother(new_node("Id", $1, NULL),$9);}
-| ID COMMA BLANKID ASSIGN PARSEINT LPAR error RPAR {$$ = NULL;};
+| ID COMMA BLANKID ASSIGN PARSEINT LPAR error RPAR {$$ = NULL;}
 ;
 
 funcInvocation: ID LPAR RPAR {$$ = new_node("Id", $1, NULL);}
 | ID LPAR expr comma_Expr RPAR {$$ = new_brother(new_node("Id", $1, NULL), new_brother($3, $4));}
-| ID LPAR error RPAR {$$ = NULL;};
+| ID LPAR error RPAR {$$ = NULL;}
 ;
 comma_Expr: /*empty*/ {$$ = NULL;}
 | comma_Expr COMMA expr{if($1 != NULL)$$ = new_brother($1, $3);
                         else $$ = $3;}
 ;
 
-expr: expr OR expr  {$$ = new_node("Or", NULL, $1); new_brother($1, $3);}
-|expr AND expr  {$$ = new_node("And", NULL, $1); new_brother($1, $3);}
-|expr LT expr   {$$ = new_node("Lt", NULL, $1); new_brother($1, $3);}
-|expr GT expr 					{$$ = new_node("Gt", NULL, $1); new_brother($1, $3);}
-|expr EQ expr 					{$$ = new_node("Eq", NULL, $1); new_brother($1, $3);}
-|expr NE expr 					{$$ = new_node("Ne", NULL, $1); new_brother($1, $3);}
-|expr LE expr 					{$$ = new_node("Le", NULL, $1); new_brother($1, $3);}
-|expr GE expr					{$$ = new_node("Ge", NULL, $1); new_brother($1, $3);}
-|expr PLUS expr 				{$$ = new_node("Add", NULL, $1); new_brother($1, $3);}
-|expr MINUS expr 				{$$ = new_node("Sub", NULL, $1); new_brother($1, $3);}
-|expr STAR expr 				{$$ = new_node("Mul", NULL, $1); new_brother($1, $3);}
-|expr DIV expr 					{$$ = new_node("Div", NULL, $1); new_brother($1, $3);}
-|expr MOD expr 					{$$ = new_node("Mod", NULL, $1); new_brother($1, $3);}
+expr: expr OR expr              {$$ = new_node("Or", NULL, $1);     new_brother($1, $3);}
+|expr AND expr                  {$$ = new_node("And", NULL, $1);    new_brother($1, $3);}
+|expr LT expr                   {$$ = new_node("Lt", NULL, $1);     new_brother($1, $3);}
+|expr GT expr 					{$$ = new_node("Gt", NULL, $1);     new_brother($1, $3);}
+|expr EQ expr 					{$$ = new_node("Eq", NULL, $1);     new_brother($1, $3);}
+|expr NE expr 					{$$ = new_node("Ne", NULL, $1);     new_brother($1, $3);}
+|expr LE expr 					{$$ = new_node("Le", NULL, $1);     new_brother($1, $3);}
+|expr GE expr					{$$ = new_node("Ge", NULL, $1);     new_brother($1, $3);}
+|expr PLUS expr 				{$$ = new_node("Add", NULL, $1);    new_brother($1, $3);}
+|expr MINUS expr 				{$$ = new_node("Sub", NULL, $1);    new_brother($1, $3);}
+|expr STAR expr 				{$$ = new_node("Mul", NULL, $1);    new_brother($1, $3);}
+|expr DIV expr 					{$$ = new_node("Div", NULL, $1);    new_brother($1, $3);}
+|expr MOD expr 					{$$ = new_node("Mod", NULL, $1);    new_brother($1, $3);}
 |NOT expr 						{$$ = new_node("Not", NULL, $2);}
-|MINUS expr 			{$$ = new_node("Minus", NULL, $2);}
-|PLUS expr 			{$$ = new_node("Plus", NULL, $2);}
-|INTLIT {$$ = new_node("IntLit", $1, NULL);}
-|REALLIT {$$ = new_node("RealLit", $1, NULL);}
-|ID {$$ = new_node("Id", $1, NULL);}
-|funcInvocation {$$ = new_node("Call", NULL, $1);}
-|LPAR expr RPAR {$$ = $2;}
-|LPAR error RPAR {$$ = NULL;}
+|MINUS expr %prec NOT			{$$ = new_node("Minus", NULL, $2);}
+|PLUS expr %prec NOT			{$$ = new_node("Plus", NULL, $2);}
+|INTLIT                         {$$ = new_node("IntLit", $1, NULL);}
+|REALLIT                        {$$ = new_node("RealLit", $1, NULL);}
+|ID                             {$$ = new_node("Id", $1, NULL);}
+|funcInvocation                 {$$ = new_node("Call", NULL, $1);}
+|LPAR expr RPAR                 {$$ = $2;}
+|LPAR error RPAR                {$$ = NULL;}
 ;
 
 

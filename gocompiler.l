@@ -32,6 +32,7 @@ RESERVED                    "--"|"++"|"break"|"case"|"chan"|"const"|"continue"|"
     int put_semicolon();
     int collumn_no_semicolon();
     char string_buff[10000];
+    int yydebug = 0;
     int erros = 0;
 %}
 
@@ -155,7 +156,6 @@ RESERVED                    "--"|"++"|"break"|"case"|"chan"|"const"|"continue"|"
                                                         collumn_no_semicolon();
                                                         if(tag == L_TAG)printf("PACKAGE\n");
                                                         return PACKAGE;
-
                                                         }
 "return"                                                {
                                                         collumn+=yyleng; 
@@ -295,7 +295,7 @@ RESERVED                    "--"|"++"|"break"|"case"|"chan"|"const"|"continue"|"
                                                                                             collumn+=yyleng; 
                                                                                             if(tag == L_TAG)printf("ID(%s)\n", yytext);
                                                                                             yylval.string = strdup(yytext);
-                                                                                            return ID;//TODO
+                                                                                            return ID;
                                                                                             }
 ({decimal_digit}+"."{decimal_digit}*{exponent}?)|{decimal_digit}+{exponent}|({decimal_digit}*"."{decimal_digit}+{exponent}?) {
                                                                                                                             collumn+=yyleng;
@@ -310,12 +310,16 @@ RESERVED                    "--"|"++"|"break"|"case"|"chan"|"const"|"continue"|"
                                                                                 if(tag == L_TAG)printf("INTLIT(%s)\n", yytext);
                                                                                 yylval.string = strdup(yytext);
                                                                                 return INTLIT; //TODO
-                                                                                
                                                                                 }
 <<EOF>>                                                                         {
                                                                                 if(tag == L_TAG) put_semicolon();
-                                                                                if(semicolon == NEED_S) return SEMICOLON; 
-                                                                                return END;
+                                                                                if(semicolon == NEED_S){
+                                                                                    semicolon = NO_NEED;
+                                                                                    return SEMICOLON; 
+
+                                                                                }
+                                                                                yyterminate();
+                                                                                return 0;
                                                                                 }
 "\n"|"\r\n"                                                                     {
                                                                                 temp_collumn = collumn;
@@ -338,6 +342,7 @@ RESERVED                    "--"|"++"|"break"|"case"|"chan"|"const"|"continue"|"
                                                                                 }
 " "|"\t"                                                                        {collumn+=yyleng;}
 \\("a"|"b"|"'"|"v")                                                             {printf("Line %d, column %d: invalid escape sequence (%s)\n", line, collumn, yytext);
+                                                                                collumn+=yyleng;    
                                                                                 semicolon = NO_NEED;
                                                                                 }
 .                                                                               {printf("Line %d, column %d: illegal character (%s)\n", line, collumn, yytext);
