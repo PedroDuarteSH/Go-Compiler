@@ -1,5 +1,8 @@
+/*
+Adriana Bernardo 2019218086
+Pedro Henriques 2019217793
+*/
 %X COMMENT_BLOCK STRING_STATE STRING_ERROR
-%option yylineno
  //Variables
 newline                     "\n"
 
@@ -345,7 +348,8 @@ RESERVED                    "--"|"++"|"break"|"case"|"chan"|"const"|"continue"|"
                                                                                 collumn+=yyleng;    
                                                                                 semicolon = NO_NEED;
                                                                                 }
-.                                                                               {printf("Line %d, column %d: illegal character (%s)\n", line, collumn, yytext);
+.                                                                               {
+                                                                                printf("Line %d, column %d: illegal character (%s)\n", line, collumn, yytext);
                                                                                 collumn_no_semicolon();
                                                                                 }
 
@@ -366,6 +370,9 @@ int main(int argc, char **argv)
         }
     }
     else yyparse();
+    if(root != NULL){
+        cleanTree(root);
+    }
     return 0;
 }
 

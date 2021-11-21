@@ -1,3 +1,7 @@
+/*
+Adriana Bernardo 2019218086
+Pedro Henriques 2019217793
+*/
 #include "tree.h"
 
 Node *new_node(char *type, char *value, Node *son){
@@ -33,4 +37,12 @@ void print_tree(Node * node, int depth)
 		printf("%s\n", node->nodeType);
 	print_tree(node->son, depth+1);
 	print_tree(node->brother, depth);
+}
+
+void cleanTree(Node * node){
+	if(node == NULL)
+		return;
+	cleanTree(node->brother);
+	cleanTree(node->son);
+	free(node);
 }

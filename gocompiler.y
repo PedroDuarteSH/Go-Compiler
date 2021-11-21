@@ -1,3 +1,8 @@
+/*
+Adriana Bernardo 2019218086
+Pedro Henriques 2019217793
+*/
+
 %{
     #include <stdio.h>
     #include "tree.h"

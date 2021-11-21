@@ -66,7 +66,7 @@
 
 
 /* First part of user prologue.  */
-#line 1 "gocompiler.y"
+#line 6 "gocompiler.y"
 
     #include <stdio.h>
     #include "tree.h"
@@ -221,7 +221,7 @@ extern int yydebug;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 68 "gocompiler.y"
+#line 73 "gocompiler.y"
 
 	struct Node *tree;
 	char *string;
@@ -606,14 +606,14 @@ static const yytype_int8 yytranslate[] =
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_int16 yyrline[] =
 {
-       0,    74,    74,    77,    78,    80,    83,    96,   109,   112,
-     113,   117,   118,   119,   120,   123,   129,   135,   141,   151,
-     166,   167,   182,   185,   186,   187,   188,   192,   196,   202,
-     207,   212,   216,   217,   218,   219,   220,   221,   222,   223,
-     226,   228,   231,   232,   235,   236,   237,   239,   240,   244,
-     245,   246,   247,   248,   249,   250,   251,   252,   253,   254,
-     255,   256,   257,   258,   259,   260,   261,   262,   263,   264,
-     265
+       0,    79,    79,    82,    83,    85,    88,   101,   114,   117,
+     118,   122,   123,   124,   125,   128,   134,   140,   146,   156,
+     171,   172,   187,   190,   191,   192,   193,   197,   201,   207,
+     212,   217,   221,   222,   223,   224,   225,   226,   227,   228,
+     231,   233,   236,   237,   240,   241,   242,   244,   245,   249,
+     250,   251,   252,   253,   254,   255,   256,   257,   258,   259,
+     260,   261,   262,   263,   264,   265,   266,   267,   268,   269,
+     270
 };
 #endif
 
@@ -1539,33 +1539,33 @@ yyreduce:
   switch (yyn)
     {
   case 2:
-#line 74 "gocompiler.y"
+#line 79 "gocompiler.y"
                                            {root = new_node("Program", NULL, (yyvsp[0].tree));}
 #line 1545 "y.tab.c"
     break;
 
   case 3:
-#line 77 "gocompiler.y"
+#line 82 "gocompiler.y"
                         {(yyval.tree) = NULL;}
 #line 1551 "y.tab.c"
     break;
 
   case 4:
-#line 78 "gocompiler.y"
+#line 83 "gocompiler.y"
                                          {if((yyvsp[-2].tree) == NULL)(yyval.tree) = (yyvsp[-1].tree);    
                                             else (yyval.tree) = new_brother((yyvsp[-2].tree), (yyvsp[-1].tree));}
 #line 1558 "y.tab.c"
     break;
 
   case 5:
-#line 80 "gocompiler.y"
+#line 85 "gocompiler.y"
                                          {if((yyvsp[-2].tree) == NULL)(yyval.tree) = (yyvsp[-1].tree);
                                             else (yyval.tree) = new_brother((yyvsp[-2].tree), (yyvsp[-1].tree));}
 #line 1565 "y.tab.c"
     break;
 
   case 6:
-#line 83 "gocompiler.y"
+#line 88 "gocompiler.y"
                             {
                             //main node
                             auxNode = new_node("VarDecl", NULL, (yyvsp[0].tree));
@@ -1583,7 +1583,7 @@ yyreduce:
     break;
 
   case 7:
-#line 96 "gocompiler.y"
+#line 101 "gocompiler.y"
                                   {auxNode = new_node("VarDecl", NULL, (yyvsp[-2].tree));
                                     auxNode2 = (yyvsp[-2].tree)->brother;
                                     Node *next = auxNode2;
@@ -1599,7 +1599,7 @@ yyreduce:
     break;
 
   case 8:
-#line 109 "gocompiler.y"
+#line 114 "gocompiler.y"
                             {
                             (yyval.tree) = new_brother((yyvsp[0].tree), new_brother(new_node("Id", (yyvsp[-2].string), NULL), (yyvsp[-1].tree)));
                             }
@@ -1607,44 +1607,44 @@ yyreduce:
     break;
 
   case 9:
-#line 112 "gocompiler.y"
+#line 117 "gocompiler.y"
                    {(yyval.tree) = NULL;}
 #line 1613 "y.tab.c"
     break;
 
   case 10:
-#line 113 "gocompiler.y"
+#line 118 "gocompiler.y"
                     {if((yyvsp[-2].tree) == NULL)(yyval.tree) = new_brother(new_node("Id", (yyvsp[0].string), NULL), NULL);
                     else (yyval.tree) = new_brother((yyvsp[-2].tree), new_node("Id", (yyvsp[0].string), NULL));}
 #line 1620 "y.tab.c"
     break;
 
   case 11:
-#line 117 "gocompiler.y"
+#line 122 "gocompiler.y"
           {(yyval.tree)=new_node("Int", NULL, NULL);}
 #line 1626 "y.tab.c"
     break;
 
   case 12:
-#line 118 "gocompiler.y"
+#line 123 "gocompiler.y"
           {(yyval.tree)=new_node("Float32", NULL, NULL);}
 #line 1632 "y.tab.c"
     break;
 
   case 13:
-#line 119 "gocompiler.y"
+#line 124 "gocompiler.y"
        {(yyval.tree)=new_node("Bool", NULL, NULL);}
 #line 1638 "y.tab.c"
     break;
 
   case 14:
-#line 120 "gocompiler.y"
+#line 125 "gocompiler.y"
          {(yyval.tree)=new_node("String", NULL, NULL);}
 #line 1644 "y.tab.c"
     break;
 
   case 15:
-#line 123 "gocompiler.y"
+#line 128 "gocompiler.y"
                                             {
                                             auxNode = new_node("FuncHeader", NULL, auxNode2 = new_node("Id", (yyvsp[-3].string), NULL));
                                             new_brother(auxNode2, new_node("FuncParams", NULL, NULL));
@@ -1655,7 +1655,7 @@ yyreduce:
     break;
 
   case 16:
-#line 129 "gocompiler.y"
+#line 134 "gocompiler.y"
                                     {
                                     auxNode = new_node("FuncHeader", NULL, auxNode2 = new_node("Id", (yyvsp[-4].string), NULL));
                                     new_brother(auxNode2, (yyvsp[-1].tree));
@@ -1666,7 +1666,7 @@ yyreduce:
     break;
 
   case 17:
-#line 135 "gocompiler.y"
+#line 140 "gocompiler.y"
                                 {
                                 auxNode = new_node("FuncHeader", NULL, auxNode2 = new_node("Id", (yyvsp[-2].string), NULL));
                                 new_brother(auxNode2, new_node("FuncParams", NULL, (yyvsp[-1].tree)));
@@ -1677,7 +1677,7 @@ yyreduce:
     break;
 
   case 18:
-#line 141 "gocompiler.y"
+#line 146 "gocompiler.y"
                                    {auxNode = new_node("FuncHeader", NULL, auxNode2 = new_node("Id", (yyvsp[-3].string), NULL));
                                     new_brother(auxNode2, (yyvsp[-1].tree));
                                     new_brother(auxNode2, new_node("FuncParams", NULL, (yyvsp[-2].tree)));
@@ -1689,7 +1689,7 @@ yyreduce:
     break;
 
   case 19:
-#line 151 "gocompiler.y"
+#line 156 "gocompiler.y"
                                            {
                             auxNode2 = new_node("Id", (yyvsp[-3].string), NULL);
                             auxNode = new_node("ParamDecl", NULL, new_brother((yyvsp[-2].tree), auxNode2));
@@ -1708,13 +1708,13 @@ yyreduce:
     break;
 
   case 20:
-#line 166 "gocompiler.y"
+#line 171 "gocompiler.y"
                          {(yyval.tree) = NULL;}
 #line 1714 "y.tab.c"
     break;
 
   case 21:
-#line 167 "gocompiler.y"
+#line 172 "gocompiler.y"
                                {
                                 if((yyvsp[-3].tree) != NULL){
                                     auxNode = new_node("Id", (yyvsp[-1].string), NULL);
@@ -1732,37 +1732,37 @@ yyreduce:
     break;
 
   case 22:
-#line 182 "gocompiler.y"
+#line 187 "gocompiler.y"
                                          {(yyval.tree)=new_node("FuncBody", NULL, (yyvsp[-1].tree));}
 #line 1738 "y.tab.c"
     break;
 
   case 23:
-#line 185 "gocompiler.y"
+#line 190 "gocompiler.y"
                                 {(yyval.tree) = NULL;}
 #line 1744 "y.tab.c"
     break;
 
   case 24:
-#line 186 "gocompiler.y"
+#line 191 "gocompiler.y"
                               {(yyval.tree)=(yyvsp[-1].tree);}
 #line 1750 "y.tab.c"
     break;
 
   case 25:
-#line 187 "gocompiler.y"
+#line 192 "gocompiler.y"
                                            {if((yyvsp[-2].tree) != NULL) new_brother((yyvsp[-2].tree), (yyvsp[-1].tree));else (yyval.tree) = (yyvsp[-1].tree);}
 #line 1756 "y.tab.c"
     break;
 
   case 26:
-#line 188 "gocompiler.y"
+#line 193 "gocompiler.y"
                                               {if((yyvsp[-2].tree) != NULL) new_brother((yyvsp[-2].tree), (yyvsp[-1].tree)); else (yyval.tree) = (yyvsp[-1].tree);}
 #line 1762 "y.tab.c"
     break;
 
   case 27:
-#line 192 "gocompiler.y"
+#line 197 "gocompiler.y"
                           {
                             (yyval.tree) = new_node("Assign", NULL, auxNode=new_node("Id", (yyvsp[-2].string), NULL)); 
                             new_brother(auxNode, (yyvsp[0].tree));
@@ -1771,7 +1771,7 @@ yyreduce:
     break;
 
   case 28:
-#line 196 "gocompiler.y"
+#line 201 "gocompiler.y"
                            {
                             if((yyvsp[-1].tree) != NULL)
                                 if((yyvsp[-1].tree)->brother != NULL)(yyval.tree)=new_node("Block", NULL, (yyvsp[-1].tree));
@@ -1782,7 +1782,7 @@ yyreduce:
     break;
 
   case 29:
-#line 202 "gocompiler.y"
+#line 207 "gocompiler.y"
                                    {
                                     (yyval.tree) = new_node("If", NULL, (yyvsp[-3].tree)); 
                                     new_brother((yyvsp[-3].tree), new_node("Block", NULL, (yyvsp[-1].tree)));
@@ -1792,7 +1792,7 @@ yyreduce:
     break;
 
   case 30:
-#line 207 "gocompiler.y"
+#line 212 "gocompiler.y"
                                                                  {
                                     (yyval.tree) = new_node("If", NULL, (yyvsp[-7].tree));
                                     new_brother((yyvsp[-7].tree), new_node("Block", NULL, (yyvsp[-5].tree)));
@@ -1802,7 +1802,7 @@ yyreduce:
     break;
 
   case 31:
-#line 212 "gocompiler.y"
+#line 217 "gocompiler.y"
                                     {
                                     new_brother((yyvsp[-3].tree), new_node("Block", NULL, (yyvsp[-1].tree))); 
                                     (yyval.tree) = new_node("For", NULL, (yyvsp[-3].tree)); 
@@ -1811,237 +1811,237 @@ yyreduce:
     break;
 
   case 32:
-#line 216 "gocompiler.y"
+#line 221 "gocompiler.y"
                                {(yyval.tree) = new_node("For", NULL, new_node("Block", NULL, (yyvsp[-1].tree)));}
 #line 1817 "y.tab.c"
     break;
 
   case 33:
-#line 217 "gocompiler.y"
+#line 222 "gocompiler.y"
          {(yyval.tree) = new_node("Return", NULL, NULL);}
 #line 1823 "y.tab.c"
     break;
 
   case 34:
-#line 218 "gocompiler.y"
+#line 223 "gocompiler.y"
               {(yyval.tree) = new_node("Return", NULL, (yyvsp[0].tree));}
 #line 1829 "y.tab.c"
     break;
 
   case 35:
-#line 219 "gocompiler.y"
+#line 224 "gocompiler.y"
                  {(yyval.tree) = new_node("Call", NULL, (yyvsp[0].tree));}
 #line 1835 "y.tab.c"
     break;
 
   case 36:
-#line 220 "gocompiler.y"
+#line 225 "gocompiler.y"
             {(yyval.tree) = new_node("ParseArgs", NULL, (yyvsp[0].tree));}
 #line 1841 "y.tab.c"
     break;
 
   case 37:
-#line 221 "gocompiler.y"
+#line 226 "gocompiler.y"
                          {(yyval.tree) = new_node("Print", NULL, new_node("StrLit", (yyvsp[-1].string), NULL));}
 #line 1847 "y.tab.c"
     break;
 
   case 38:
-#line 222 "gocompiler.y"
+#line 227 "gocompiler.y"
                        {(yyval.tree) = new_node("Print", NULL, (yyvsp[-1].tree));}
 #line 1853 "y.tab.c"
     break;
 
   case 39:
-#line 223 "gocompiler.y"
+#line 228 "gocompiler.y"
         {(yyval.tree) = NULL;}
 #line 1859 "y.tab.c"
     break;
 
   case 40:
-#line 226 "gocompiler.y"
+#line 231 "gocompiler.y"
                                            {if((yyvsp[-2].tree) == NULL)(yyval.tree) = (yyvsp[0].tree);
                                             else (yyval.tree) = new_brother((yyvsp[-2].tree), (yyvsp[0].tree));}
 #line 1866 "y.tab.c"
     break;
 
   case 41:
-#line 228 "gocompiler.y"
+#line 233 "gocompiler.y"
             {(yyval.tree) = NULL;}
 #line 1872 "y.tab.c"
     break;
 
   case 42:
-#line 231 "gocompiler.y"
+#line 236 "gocompiler.y"
                                                                            {(yyval.tree) = new_brother(new_node("Id", (yyvsp[-10].string), NULL),(yyvsp[-2].tree));}
 #line 1878 "y.tab.c"
     break;
 
   case 43:
-#line 232 "gocompiler.y"
+#line 237 "gocompiler.y"
                                                    {(yyval.tree) = NULL;}
 #line 1884 "y.tab.c"
     break;
 
   case 44:
-#line 235 "gocompiler.y"
+#line 240 "gocompiler.y"
                              {(yyval.tree) = new_node("Id", (yyvsp[-2].string), NULL);}
 #line 1890 "y.tab.c"
     break;
 
   case 45:
-#line 236 "gocompiler.y"
+#line 241 "gocompiler.y"
                                {(yyval.tree) = new_brother(new_node("Id", (yyvsp[-4].string), NULL), new_brother((yyvsp[-2].tree), (yyvsp[-1].tree)));}
 #line 1896 "y.tab.c"
     break;
 
   case 46:
-#line 237 "gocompiler.y"
+#line 242 "gocompiler.y"
                      {(yyval.tree) = NULL;}
 #line 1902 "y.tab.c"
     break;
 
   case 47:
-#line 239 "gocompiler.y"
+#line 244 "gocompiler.y"
                       {(yyval.tree) = NULL;}
 #line 1908 "y.tab.c"
     break;
 
   case 48:
-#line 240 "gocompiler.y"
+#line 245 "gocompiler.y"
                        {if((yyvsp[-2].tree) != NULL)(yyval.tree) = new_brother((yyvsp[-2].tree), (yyvsp[0].tree));
                         else (yyval.tree) = (yyvsp[0].tree);}
 #line 1915 "y.tab.c"
     break;
 
   case 49:
-#line 244 "gocompiler.y"
+#line 249 "gocompiler.y"
                                 {(yyval.tree) = new_node("Or", NULL, (yyvsp[-2].tree));     new_brother((yyvsp[-2].tree), (yyvsp[0].tree));}
 #line 1921 "y.tab.c"
     break;
 
   case 50:
-#line 245 "gocompiler.y"
+#line 250 "gocompiler.y"
                                 {(yyval.tree) = new_node("And", NULL, (yyvsp[-2].tree));    new_brother((yyvsp[-2].tree), (yyvsp[0].tree));}
 #line 1927 "y.tab.c"
     break;
 
   case 51:
-#line 246 "gocompiler.y"
+#line 251 "gocompiler.y"
                                 {(yyval.tree) = new_node("Lt", NULL, (yyvsp[-2].tree));     new_brother((yyvsp[-2].tree), (yyvsp[0].tree));}
 #line 1933 "y.tab.c"
     break;
 
   case 52:
-#line 247 "gocompiler.y"
+#line 252 "gocompiler.y"
                                                 {(yyval.tree) = new_node("Gt", NULL, (yyvsp[-2].tree));     new_brother((yyvsp[-2].tree), (yyvsp[0].tree));}
 #line 1939 "y.tab.c"
     break;
 
   case 53:
-#line 248 "gocompiler.y"
+#line 253 "gocompiler.y"
                                                 {(yyval.tree) = new_node("Eq", NULL, (yyvsp[-2].tree));     new_brother((yyvsp[-2].tree), (yyvsp[0].tree));}
 #line 1945 "y.tab.c"
     break;
 
   case 54:
-#line 249 "gocompiler.y"
+#line 254 "gocompiler.y"
                                                 {(yyval.tree) = new_node("Ne", NULL, (yyvsp[-2].tree));     new_brother((yyvsp[-2].tree), (yyvsp[0].tree));}
 #line 1951 "y.tab.c"
     break;
 
   case 55:
-#line 250 "gocompiler.y"
+#line 255 "gocompiler.y"
                                                 {(yyval.tree) = new_node("Le", NULL, (yyvsp[-2].tree));     new_brother((yyvsp[-2].tree), (yyvsp[0].tree));}
 #line 1957 "y.tab.c"
     break;
 
   case 56:
-#line 251 "gocompiler.y"
+#line 256 "gocompiler.y"
                                                 {(yyval.tree) = new_node("Ge", NULL, (yyvsp[-2].tree));     new_brother((yyvsp[-2].tree), (yyvsp[0].tree));}
 #line 1963 "y.tab.c"
     break;
 
   case 57:
-#line 252 "gocompiler.y"
+#line 257 "gocompiler.y"
                                                 {(yyval.tree) = new_node("Add", NULL, (yyvsp[-2].tree));    new_brother((yyvsp[-2].tree), (yyvsp[0].tree));}
 #line 1969 "y.tab.c"
     break;
 
   case 58:
-#line 253 "gocompiler.y"
+#line 258 "gocompiler.y"
                                                 {(yyval.tree) = new_node("Sub", NULL, (yyvsp[-2].tree));    new_brother((yyvsp[-2].tree), (yyvsp[0].tree));}
 #line 1975 "y.tab.c"
     break;
 
   case 59:
-#line 254 "gocompiler.y"
+#line 259 "gocompiler.y"
                                                 {(yyval.tree) = new_node("Mul", NULL, (yyvsp[-2].tree));    new_brother((yyvsp[-2].tree), (yyvsp[0].tree));}
 #line 1981 "y.tab.c"
     break;
 
   case 60:
-#line 255 "gocompiler.y"
+#line 260 "gocompiler.y"
                                                 {(yyval.tree) = new_node("Div", NULL, (yyvsp[-2].tree));    new_brother((yyvsp[-2].tree), (yyvsp[0].tree));}
 #line 1987 "y.tab.c"
     break;
 
   case 61:
-#line 256 "gocompiler.y"
+#line 261 "gocompiler.y"
                                                 {(yyval.tree) = new_node("Mod", NULL, (yyvsp[-2].tree));    new_brother((yyvsp[-2].tree), (yyvsp[0].tree));}
 #line 1993 "y.tab.c"
     break;
 
   case 62:
-#line 257 "gocompiler.y"
+#line 262 "gocompiler.y"
                                                         {(yyval.tree) = new_node("Not", NULL, (yyvsp[0].tree));}
 #line 1999 "y.tab.c"
     break;
 
   case 63:
-#line 258 "gocompiler.y"
+#line 263 "gocompiler.y"
                                         {(yyval.tree) = new_node("Minus", NULL, (yyvsp[0].tree));}
 #line 2005 "y.tab.c"
     break;
 
   case 64:
-#line 259 "gocompiler.y"
+#line 264 "gocompiler.y"
                                         {(yyval.tree) = new_node("Plus", NULL, (yyvsp[0].tree));}
 #line 2011 "y.tab.c"
     break;
 
   case 65:
-#line 260 "gocompiler.y"
+#line 265 "gocompiler.y"
                                 {(yyval.tree) = new_node("IntLit", (yyvsp[0].string), NULL);}
 #line 2017 "y.tab.c"
     break;
 
   case 66:
-#line 261 "gocompiler.y"
+#line 266 "gocompiler.y"
                                 {(yyval.tree) = new_node("RealLit", (yyvsp[0].string), NULL);}
 #line 2023 "y.tab.c"
     break;
 
   case 67:
-#line 262 "gocompiler.y"
+#line 267 "gocompiler.y"
                                 {(yyval.tree) = new_node("Id", (yyvsp[0].string), NULL);}
 #line 2029 "y.tab.c"
     break;
 
   case 68:
-#line 263 "gocompiler.y"
+#line 268 "gocompiler.y"
                                 {(yyval.tree) = new_node("Call", NULL, (yyvsp[0].tree));}
 #line 2035 "y.tab.c"
     break;
 
   case 69:
-#line 264 "gocompiler.y"
+#line 269 "gocompiler.y"
                                 {(yyval.tree) = (yyvsp[-1].tree);}
 #line 2041 "y.tab.c"
     break;
 
   case 70:
-#line 265 "gocompiler.y"
+#line 270 "gocompiler.y"
                                 {(yyval.tree) = NULL;}
 #line 2047 "y.tab.c"
     break;
@@ -2279,6 +2279,6 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 269 "gocompiler.y"
+#line 274 "gocompiler.y"
 
 
