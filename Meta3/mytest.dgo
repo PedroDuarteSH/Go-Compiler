@@ -1,0 +1,8 @@
+package main
+
+fuc f1(arg int) int {
+    if arg == 42 {
+        return -1
+    }
+    return arg + 3
+}
