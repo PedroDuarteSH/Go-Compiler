@@ -2,6 +2,7 @@
 Adriana Bernardo 2019218086
 Pedro Henriques 2019217793
 */
+
 %X COMMENT_BLOCK STRING_STATE STRING_ERROR
  //Variables
 newline                     "\n"
@@ -18,9 +19,12 @@ RESERVED                    "--"|"++"|"break"|"case"|"chan"|"const"|"continue"|"
 %{
     #include "y.tab.h"
     #include "tree.h"
+    #include "symbol_table.h"
     extern struct Node* root;
+
     #define L_TAG 1
     #define T_TAG 2
+    #define S_TAG 3
     #define NO_TAG 0
     #define NO_NEED 0
     #define NEED_S 1
@@ -263,6 +267,7 @@ RESERVED                    "--"|"++"|"break"|"case"|"chan"|"const"|"continue"|"
 
 
 \"                                                    {string_pos = 0;BEGIN STRING_STATE;string_buff[string_pos++] = '"';string_buff[string_pos] = '\0';temp_collumn=0 + yyleng;}
+
 <STRING_STATE>\"                                            {
                                                             BEGIN 0;
                                                             collumn += temp_collumn + yyleng;
@@ -274,8 +279,8 @@ RESERVED                    "--"|"++"|"break"|"case"|"chan"|"const"|"continue"|"
                                                             yytext = string_buff;
                                                             yylval.string = strdup(yytext);
                                                             return STRLIT;
-                                                            
                                                             }
+
 <STRING_STATE>"\r\n"|"\n"|"\r"                              {BEGIN 0; string_buff[string_pos] = 0; printf("Line %d, column %d: unterminated string literal\n", line, collumn);collumn_no_semicolon();line++;collumn = 1;}
 <STRING_STATE>\\\"|\\"n"|\\"f"|\\"r"|\\"t"|\\\\|\\\"        {string_buff[string_pos++] = yytext[0];string_buff[string_pos++] = yytext[1]; string_buff[string_pos] = 0;temp_collumn+= 2;}
 <STRING_STATE>\\.|\\                                        {BEGIN STRING_ERROR;printf("Line %d, column %d: invalid escape sequence (%s)\n", line, collumn + temp_collumn, yytext);temp_collumn+=yyleng;semicolon = NO_NEED;}
@@ -335,7 +340,7 @@ RESERVED                    "--"|"++"|"break"|"case"|"chan"|"const"|"continue"|"
                                                                                     return SEMICOLON;
                                                                                 }
                                                                                 }
-"//".*                                                                         {
+"//".*                                                                          {
                                                                                 collumn+=yyleng;
                                                                                 if(tag == L_TAG)put_semicolon();
                                                                                 if(semicolon == NEED_S){
@@ -355,30 +360,44 @@ RESERVED                    "--"|"++"|"break"|"case"|"chan"|"const"|"continue"|"
 
 %%
 
-int main(int argc, char **argv)
-{
+int main(int argc, char **argv){
     string_buff[0] = 0;
     if(argc == 2){
-        if(argv[1][0] == '-' && argv[1][1] == 'l'){
+
+        //Lexical analisys
+        if(argv[1][0] == '-' && argv[1][1] == 'l' && argv[1][2] == '\0'){
             tag = L_TAG;
             yylex();   
         }
-        if(argv[1][0] == '-' && argv[1][1] == 't'){
+
+        //Sintatical analisys
+        if(argv[1][0] == '-' && argv[1][1] == 't' && argv[1][2] == '\0'){
             tag = T_TAG;
             yyparse();
             if(!erros) print_tree(root, 0);
         }
+
+        //Semantic analisys
+        if(argv[1][0] == '-' && argv[1][1] == 's' && argv[1][2] == '\0'){
+            tag = S_TAG;
+            yyparse();
+            Table *global_table = create_tables(root);
+            print_table(global_table);
+        }
     }
-    else yyparse();
+    else{
+        yyparse();
+    } 
     if(root != NULL){
         cleanTree(root);
     }
+    
+    yylex_destroy();
     return 0;
 }
 
-int yywrap()
-{
-return 1;
+int yywrap(){
+    return 1;
 }
 
 int collumn_no_semicolon(){
@@ -405,5 +424,3 @@ void yyerror (char *s) {
     }
     else printf ("Line %d, column %d: %s: %s\n", line, c , s, yytext);
 }
-
-

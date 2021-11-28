@@ -1,0 +1,38 @@
+===== Global Symbol Table =====
+a		float32
+i		int
+i		bool
+f	()	none
+f	()	none
+main	()	none
+undef	()	none
+types	()	none
+g	()	none
+h	(bool)	int
+
+===== Function f() Symbol Table =====
+return		none
+
+===== Function f() Symbol Table =====
+return		none
+
+===== Function main() Symbol Table =====
+return		none
+x		int
+y		int
+b		bool
+
+===== Function undef() Symbol Table =====
+return		none
+
+===== Function types() Symbol Table =====
+return		none
+x		float32
+n		int
+
+===== Function g() Symbol Table =====
+return		none
+
+===== Function h(bool) Symbol Table =====
+return		int
+q		bool	param
