@@ -1,7 +1,0 @@
-STRLIT("\\ola")
-STRLIT(" ")
-STRLIT("asd")
-Line 3, column 11: unterminated string literal
-STRLIT("ola ola\t")
-STRLIT("ola\n")
-SEMICOLON

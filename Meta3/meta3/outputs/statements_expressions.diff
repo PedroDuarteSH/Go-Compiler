@@ -1,0 +1,35 @@
+0a1
+> Line 4, column 39: Incompatible type int in return statement
+4d4
+< Line 28, column 9: Symbol h declared but never used
+6d5
+< Line 31, column 24: Operator + cannot be applied to types float32, undef
+7a7
+> Line 31, column 24: Operator + cannot be applied to types float32, undef
+9d8
+< Line 32, column 4: Operator = cannot be applied to types int, undef
+10a10
+> Line 32, column 4: Operator = cannot be applied to types int, undef
+12d11
+< Line 34, column 4: Operator = cannot be applied to types int, undef
+13a13
+> Line 34, column 4: Operator = cannot be applied to types int, undef
+16d15
+< Line 35, column 7: Operator = cannot be applied to types float32, undef
+18c17
+< Line 37, column 13: Operator strconv.Atoi cannot be applied to types int, undef
+---
+> Line 35, column 7: Operator = cannot be applied to types float32, undef
+19a19
+> Line 37, column 13: Operator strconv.Atoi cannot be applied to types int, undef
+21d20
+< Line 4, column 39: Incompatible type int in return statement
+27d25
+< Line 55, column 6: Operator = cannot be applied to types int, undef
+28a27
+> Line 55, column 6: Operator = cannot be applied to types int, undef
+33d31
+< Line 76, column 21: Operator = cannot be applied to types undef, undef
+35a34,35
+> Line 76, column 21: Operator = cannot be applied to types undef, undef
+> Line 28, column 9: Symbol h declared but never used

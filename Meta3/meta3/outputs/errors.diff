@@ -1,0 +1,15 @@
+4d3
+< Line 16, column 12: Symbol y declared but never used
+9d7
+< Line 23, column 9: Incompatible type int in for statement
+11d8
+< Line 25, column 13: Cannot find symbol h(undef)
+13c10,11
+< Line 32, column 11: Operator < cannot be applied to types int, undef
+---
+> Line 25, column 13: Cannot find symbol h(undef)
+> Line 23, column 9: Incompatible type int in for statement
+14a13
+> Line 32, column 11: Operator < cannot be applied to types int, undef
+16a16
+> Line 16, column 12: Symbol y declared but never used

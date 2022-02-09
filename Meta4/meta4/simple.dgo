@@ -1,0 +1,29 @@
+package main
+
+func main() {
+	var a int;
+	var b int;
+	var c int;
+	var d float32;
+	var e float32;
+	var f int;
+	var g int;
+	var h int;
+	var i float32;
+	var j float32;
+	a = 50;
+	b = 20;
+	c = 34;
+	d = 0.7;
+	e = 8.9;
+	f = 64;
+	g = 42;
+	h = 55;
+	i = 1.0e+25;
+	j = 0.5;
+	fmt.Println(j*37.0-9.0*i);
+	fmt.Println(e*j-d*0.0);
+	fmt.Println(e*e-i);
+	fmt.Println(b*600+h/4);
+	fmt.Println(j*37.8/9.1*j);
+}
