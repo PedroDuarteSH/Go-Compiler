@@ -22,9 +22,9 @@ func main() {
 	area = calcArea(rad)
 	calcCir(rad)
 	
-	fmt.Println("Area of Circle is : ""ola")
+	fmt.Println("Area of Circle is : ")
 	fmt.Println(area)
-	fmt.Println("Circumference of Circle is : ""ola")
+	fmt.Println("Circumference of Circle is : ")
 	fmt.Println(ci)
 	
 	fmt.Println(area * (area - ci + PI) / -13 && !1) 

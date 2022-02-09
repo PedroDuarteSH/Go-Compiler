@@ -11,7 +11,7 @@ Pedro Henriques 2019217793
     Node *auxNode2;
     int yylex(void);
     void yyerror (char *s);
-    int i =  0;
+    int i = 0;
 %}
 //Reserved words
 %token RESERVED
@@ -258,15 +258,15 @@ expr: expr OR expr              {$$ = new_node("Or", NULL, $1);     new_brother(
 |expr STAR expr 				{$$ = new_node("Mul", NULL, $1);    new_brother($1, $3);}
 |expr DIV expr 					{$$ = new_node("Div", NULL, $1);    new_brother($1, $3);}
 |expr MOD expr 					{$$ = new_node("Mod", NULL, $1);    new_brother($1, $3);}
-|NOT expr 						{$$ = new_node("Not", NULL, $2);}
-|MINUS expr %prec NOT			{$$ = new_node("Minus", NULL, $2);}
-|PLUS expr %prec NOT			{$$ = new_node("Plus", NULL, $2);}
-|INTLIT                         {$$ = new_node("IntLit", $1, NULL);}
+|NOT expr 						{$$ = new_node("Not", NULL, $2);    }
+|MINUS expr %prec NOT			{$$ = new_node("Minus", NULL, $2);  }
+|PLUS expr %prec NOT			{$$ = new_node("Plus", NULL, $2);   }
+|INTLIT                         {$$ = new_node("IntLit", $1, NULL); }
 |REALLIT                        {$$ = new_node("RealLit", $1, NULL);}
-|ID                             {$$ = new_node("Id", $1, NULL);}
-|funcInvocation                 {$$ = new_node("Call", NULL, $1);}
-|LPAR expr RPAR                 {$$ = $2;}
-|LPAR error RPAR                {$$ = NULL;}
+|ID                             {$$ = new_node("Id", $1, NULL);     }
+|funcInvocation                 {$$ = new_node("Call", NULL, $1);   }
+|LPAR expr RPAR                 {$$ = $2;   }
+|LPAR error RPAR                {$$ = NULL; }
 ;
 
 

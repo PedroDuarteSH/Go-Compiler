@@ -4,7 +4,8 @@ Pedro Henriques 2019217793
 */
 #include "tree.h"
 
-Node *new_node(char *type, char *value, Node *son){
+Node *new_node(char *type, char *value, Node *son)
+{
     Node *new = (Node *) malloc(sizeof(Node));
     new->nodeType = type;
   	new->nodeValue = value;
@@ -14,7 +15,8 @@ Node *new_node(char *type, char *value, Node *son){
 }
 
 
-Node * new_brother(Node *brother, Node *brother_to_add){
+Node * new_brother(Node *brother, Node *brother_to_add)
+{
 	if(brother == NULL) return NULL;
 	Node *aux = brother;
     while(brother->brother != NULL){

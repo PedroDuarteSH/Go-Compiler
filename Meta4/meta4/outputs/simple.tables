@@ -1,0 +1,120 @@
+===== Global Symbol Table =====
+main	()	none
+
+===== Function main() Symbol Table =====
+return		none
+a		int
+b		int
+c		int
+d		float32
+e		float32
+f		int
+g		int
+h		int
+i		float32
+j		float32
+
+Program
+..FuncDecl
+....FuncHeader
+......Id(main)
+......FuncParams
+....FuncBody
+......VarDecl
+........Int
+........Id(a)
+......VarDecl
+........Int
+........Id(b)
+......VarDecl
+........Int
+........Id(c)
+......VarDecl
+........Float32
+........Id(d)
+......VarDecl
+........Float32
+........Id(e)
+......VarDecl
+........Int
+........Id(f)
+......VarDecl
+........Int
+........Id(g)
+......VarDecl
+........Int
+........Id(h)
+......VarDecl
+........Float32
+........Id(i)
+......VarDecl
+........Float32
+........Id(j)
+......Assign - int
+........Id(a) - int
+........IntLit(50) - int
+......Assign - int
+........Id(b) - int
+........IntLit(20) - int
+......Assign - int
+........Id(c) - int
+........IntLit(34) - int
+......Assign - float32
+........Id(d) - float32
+........RealLit(0.7) - float32
+......Assign - float32
+........Id(e) - float32
+........RealLit(8.9) - float32
+......Assign - int
+........Id(f) - int
+........IntLit(64) - int
+......Assign - int
+........Id(g) - int
+........IntLit(42) - int
+......Assign - int
+........Id(h) - int
+........IntLit(55) - int
+......Assign - float32
+........Id(i) - float32
+........RealLit(1.0e+25) - float32
+......Assign - float32
+........Id(j) - float32
+........RealLit(0.5) - float32
+......Print
+........Sub - float32
+..........Mul - float32
+............Id(j) - float32
+............RealLit(37.0) - float32
+..........Mul - float32
+............RealLit(9.0) - float32
+............Id(i) - float32
+......Print
+........Sub - float32
+..........Mul - float32
+............Id(e) - float32
+............Id(j) - float32
+..........Mul - float32
+............Id(d) - float32
+............RealLit(0.0) - float32
+......Print
+........Sub - float32
+..........Mul - float32
+............Id(e) - float32
+............Id(e) - float32
+..........Id(i) - float32
+......Print
+........Add - int
+..........Mul - int
+............Id(b) - int
+............IntLit(600) - int
+..........Div - int
+............Id(h) - int
+............IntLit(4) - int
+......Print
+........Mul - float32
+..........Div - float32
+............Mul - float32
+..............Id(j) - float32
+..............RealLit(37.8) - float32
+............RealLit(9.1) - float32
+..........Id(j) - float32

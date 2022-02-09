@@ -11,7 +11,6 @@ typedef struct Node
 {
 	char* nodeType;
 	char* nodeValue;
-
 	struct Node *son;
 	struct Node *brother;
 } Node;

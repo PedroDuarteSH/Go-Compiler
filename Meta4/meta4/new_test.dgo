@@ -1,0 +1,11 @@
+package main
+func f(a int){
+    fmt.Println(a);
+}
+
+
+func main() {
+	var a int;
+    fmt.Println(a);
+    f(a);
+}

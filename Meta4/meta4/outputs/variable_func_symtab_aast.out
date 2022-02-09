@@ -1,0 +1,33 @@
+define void @oneFunc () {
+	ret void
+}
+define void @twoFunc (i32) {
+	ret void
+}
+define void @treeFunc (i32, double) {
+	ret void
+}
+define void @fourFunc (i32, double, string) {
+	ret void
+}
+define void @fiveFunc (i32, double, string, i1) {
+	ret void
+}
+define i32 @sixFunc (i32) {
+ret i32 0
+}
+define double @sevenFunc (i32, double) {
+ret i32 0
+}
+define string @eightFunc (i32, double, string) {
+ret i32 0
+}
+define i1 @nineFunc (i32, double, string, i1) {
+ret i32 0
+}
+define i32 @tenFunc (i32) {
+ret i32 0
+}
+define void @variable_func_declarations () {
+	ret void
+}

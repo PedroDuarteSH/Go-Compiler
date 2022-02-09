@@ -641,6 +641,7 @@ Pedro Henriques 2019217793
     #include "y.tab.h"
     #include "tree.h"
     #include "symbol_table.h"
+    #include "ASTnoted.h"
     extern struct Node* root;
 
     #define L_TAG 1
@@ -649,21 +650,21 @@ Pedro Henriques 2019217793
     #define NO_TAG 0
     #define NO_NEED 0
     #define NEED_S 1
-    int collumn = 1;
+    int column = 1;
     int line = 1;
     int temp_line = 0;
-    int temp_collumn = 0;
+    int temp_column = 0;
     int tag = NO_TAG;
     int semicolon = NO_NEED;
     int in_comment = NO_NEED;
     int string_pos = 0;
     int put_semicolon();
-    int collumn_no_semicolon();
+    int column_no_semicolon();
     char string_buff[10000];
     int yydebug = 0;
     int erros = 0;
-#line 666 "lex.yy.c"
 #line 667 "lex.yy.c"
+#line 668 "lex.yy.c"
 
 #define INITIAL 0
 #define COMMENT_BLOCK 1
@@ -883,10 +884,10 @@ YY_DECL
 		}
 
 	{
-#line 46 "gocompiler.l"
+#line 47 "gocompiler.l"
 
 
-#line 890 "lex.yy.c"
+#line 891 "lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -945,180 +946,221 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 48 "gocompiler.l"
+#line 49 "gocompiler.l"
 {
-                                                        collumn_no_semicolon();
+                                                        yylval.data.line = line;
+                                                        yylval.data.column = column;
+                                                        column_no_semicolon();
                                                         if(tag == L_TAG) printf("RESERVED(%s)\n", yytext);
                                                         return RESERVED;
                                                         }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 53 "gocompiler.l"
+#line 56 "gocompiler.l"
 {
-                                                        collumn_no_semicolon();
+                                                        yylval.data.line = line;
+                                                        yylval.data.column = column;
+                                                        column_no_semicolon();
                                                         if(tag == L_TAG)printf("SEMICOLON\n");
                                                         return SEMICOLON;
                                                         }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 58 "gocompiler.l"
+#line 63 "gocompiler.l"
 {
-                                                        collumn_no_semicolon();
+                                                        yylval.data.line = line;
+                                                        yylval.data.column = column;
+                                                        column_no_semicolon();
                                                         if(tag == L_TAG)printf("COMMA\n");
                                                         return COMMA;
                                                         }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 63 "gocompiler.l"
+#line 70 "gocompiler.l"
 {
-                                                        collumn_no_semicolon();
+                                                        yylval.data.line = line;
+                                                        yylval.data.column = column;
+                                                        column_no_semicolon();
                                                         if(tag == L_TAG)printf("BLANKID\n");
                                                         return BLANKID;
                                                         }
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 68 "gocompiler.l"
+#line 77 "gocompiler.l"
 {
-                                                        collumn_no_semicolon();
+                                                        yylval.data.line = line;
+                                                        yylval.data.column = column;
+                                                        column_no_semicolon();
                                                         if(tag == L_TAG)printf("STAR\n");
                                                         return STAR;
                                                         }
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 73 "gocompiler.l"
+#line 84 "gocompiler.l"
 {
-                                                        collumn_no_semicolon();
+                                                        yylval.data.line = line;
+                                                        yylval.data.column = column;
+                                                        column_no_semicolon();
                                                         if(tag == L_TAG)printf("DIV\n");
                                                         return DIV;
                                                         }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 78 "gocompiler.l"
+#line 91 "gocompiler.l"
 {
-                                                        collumn_no_semicolon();
+                                                        yylval.data.line = line;
+                                                        yylval.data.column = column;
+                                                        column_no_semicolon();
                                                         if(tag == L_TAG)printf("MINUS\n");
                                                         return MINUS;
                                                         }
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 83 "gocompiler.l"
+#line 98 "gocompiler.l"
 {
-                                                        collumn_no_semicolon();
+                                                        yylval.data.line = line;
+                                                        yylval.data.column = column;
+                                                        column_no_semicolon();
                                                         if(tag == L_TAG)printf("PLUS\n");
                                                         return PLUS;
                                                         }
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 88 "gocompiler.l"
+#line 105 "gocompiler.l"
 {
-                                                        collumn_no_semicolon();
+                                                        yylval.data.line = line;
+                                                        yylval.data.column = column;
+                                                        column_no_semicolon();
                                                         if(tag == L_TAG)printf("EQ\n");
                                                         return EQ;
                                                         }
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 93 "gocompiler.l"
+#line 112 "gocompiler.l"
 {
-                                                        collumn_no_semicolon();
+                                                        yylval.data.line = line;
+                                                        yylval.data.column = column;
+                                                        column_no_semicolon();
                                                         if(tag == L_TAG)printf("GE\n");
                                                         return GE;
                                                         }
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 98 "gocompiler.l"
+#line 119 "gocompiler.l"
 {
-                                                        collumn_no_semicolon();
+                                                        yylval.data.line = line;
+                                                        yylval.data.column = column;
+                                                        column_no_semicolon();
                                                         if(tag == L_TAG)printf("LBRACE\n");
                                                         return LBRACE;
                                                         }
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 103 "gocompiler.l"
+#line 126 "gocompiler.l"
 {
-                                                        collumn_no_semicolon();
+                                                        yylval.data.line = line;
+                                                        yylval.data.column = column;
+                                                        column_no_semicolon();
                                                         if(tag == L_TAG)printf("LE\n");
                                                         return LE;
                                                         }
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 108 "gocompiler.l"
+#line 133 "gocompiler.l"
 {
-                                                        collumn_no_semicolon();
+                                                        yylval.data.line = line;
+                                                        yylval.data.column = column;
+                                                        column_no_semicolon();
                                                         if(tag == L_TAG)printf("LPAR\n");
                                                         return LPAR;
                                                         }
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 113 "gocompiler.l"
+#line 140 "gocompiler.l"
 {
-                                                        collumn_no_semicolon();
+                                                        yylval.data.line = line;
+                                                        yylval.data.column = column;
+                                                        column_no_semicolon();
                                                         if(tag == L_TAG){printf("LSQ\n");}
                                                         return LSQ;
                                                         }
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 118 "gocompiler.l"
+#line 147 "gocompiler.l"
 {
-                                                        collumn_no_semicolon();
+                                                        yylval.data.line = line;
+                                                        yylval.data.column = column;
+                                                        column_no_semicolon();
                                                         if(tag == L_TAG)printf("MOD\n");
                                                         return MOD;
                                                         }
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 123 "gocompiler.l"
+#line 154 "gocompiler.l"
 {
-                                                        collumn_no_semicolon();
+                                                        yylval.data.line = line;
+                                                        yylval.data.column = column;
+                                                        column_no_semicolon();
                                                         if(tag == L_TAG)printf("NE\n");
                                                         return NE;
                                                         }
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 128 "gocompiler.l"
+#line 161 "gocompiler.l"
 {
-                                                        collumn_no_semicolon();
-                                                        if(tag == L_TAG)printf("NOT\n");
+                                                        yylval.data.line = line;
+                                                        yylval.data.column = column;
+                                                        column_no_semicolon();
+                                                        if(tag == L_TAG)printf("NOT\n"); 
                                                         return NOT;
                                                         }
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 133 "gocompiler.l"
+#line 168 "gocompiler.l"
 {
-                                                        collumn_no_semicolon();
+                                                        yylval.data.line = line;
+                                                        yylval.data.column = column;
+                                                        column_no_semicolon();
                                                         if(tag == L_TAG)printf("AND\n");
+                                                        
                                                         return AND;
                                                         }
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 138 "gocompiler.l"
+#line 176 "gocompiler.l"
 {
-                                                        collumn_no_semicolon();
+                                                        yylval.data.line = line;
+                                                        yylval.data.column = column;
+                                                        column_no_semicolon();
                                                         if(tag == L_TAG)printf("OR\n");
                                                         return OR;
                                                         }
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 143 "gocompiler.l"
+#line 183 "gocompiler.l"
 {
-                                                        collumn+=yyleng; 
+                                                        yylval.data.line = line;
+                                                        yylval.data.column = column;
+                                                        column+=yyleng; 
                                                         semicolon = NEED_S;
                                                         if(tag == L_TAG)printf("RBRACE\n");
                                                         return RBRACE;
@@ -1126,39 +1168,45 @@ YY_RULE_SETUP
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 149 "gocompiler.l"
+#line 191 "gocompiler.l"
 {
-                                                        collumn+=yyleng; 
+                                                        yylval.data.line = line;
+                                                        yylval.data.column = column;
+                                                        column+=yyleng; 
                                                         semicolon = NEED_S;
                                                         if(tag == L_TAG)printf("RPAR\n");
                                                         return RPAR;
-                                                        
                                                         }
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 156 "gocompiler.l"
+#line 199 "gocompiler.l"
 {
-                                                        collumn+=yyleng; semicolon = NEED_S;
+                                                        yylval.data.line = line;
+                                                        yylval.data.column = column;
+                                                        column+=yyleng; semicolon = NEED_S;
                                                         if(tag == L_TAG)printf("RSQ\n");
                                                         return RSQ;
-                                                        
                                                         }
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 162 "gocompiler.l"
+#line 206 "gocompiler.l"
 {
-                                                        collumn_no_semicolon();
+                                                        yylval.data.line = line;
+                                                        yylval.data.column = column;
+                                                        column_no_semicolon();
                                                         if(tag == L_TAG)printf("PACKAGE\n");
                                                         return PACKAGE;
                                                         }
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 167 "gocompiler.l"
+#line 213 "gocompiler.l"
 {
-                                                        collumn+=yyleng; 
+                                                        yylval.data.line = line;
+                                                        yylval.data.column = column;
+                                                        column+=yyleng; 
                                                         semicolon = NEED_S;
                                                         if(tag == L_TAG)printf("RETURN\n");
                                                         return RETURN;
@@ -1166,300 +1214,339 @@ YY_RULE_SETUP
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 173 "gocompiler.l"
+#line 221 "gocompiler.l"
 {
-                                                        collumn_no_semicolon();
+                                                        yylval.data.line = line;
+                                                        yylval.data.column = column;
+                                                        column_no_semicolon();
                                                         if(tag == L_TAG)printf("ELSE\n");
                                                         return ELSE;
                                                         }
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 178 "gocompiler.l"
+#line 228 "gocompiler.l"
 {
-                                                        collumn_no_semicolon();
+                                                        yylval.data.line = line;
+                                                        yylval.data.column = column;
+                                                        column_no_semicolon();
                                                         if(tag == L_TAG)printf("FOR\n");
                                                         return FOR;
                                                         }
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 183 "gocompiler.l"
+#line 235 "gocompiler.l"
 {
-                                                        collumn_no_semicolon();
+                                                        yylval.data.line = line;
+                                                        yylval.data.column = column;
+                                                        column_no_semicolon();
                                                         if(tag == L_TAG)printf("IF\n");
                                                         return IF;
                                                         }
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 188 "gocompiler.l"
+#line 242 "gocompiler.l"
 {
-                                                        collumn_no_semicolon();
+                                                        yylval.data.line = line;
+                                                        yylval.data.column = column;
+                                                        column_no_semicolon();
                                                         if(tag == L_TAG)printf("VAR\n");
                                                         return VAR;
                                                         }
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 193 "gocompiler.l"
+#line 249 "gocompiler.l"
 {
-                                                        collumn_no_semicolon();
+                                                        yylval.data.line = line;
+                                                        yylval.data.column = column;
+                                                        column_no_semicolon();
                                                         if(tag == L_TAG)printf("INT\n");
                                                         return INT;
                                                         }
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 198 "gocompiler.l"
+#line 256 "gocompiler.l"
 {
-                                                        collumn_no_semicolon();
+                                                        yylval.data.line = line;
+                                                        yylval.data.column = column;
+                                                        column_no_semicolon();
                                                         if(tag == L_TAG)printf("FLOAT32\n");
                                                         return FLOAT32;
                                                         }
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 203 "gocompiler.l"
+#line 263 "gocompiler.l"
 {
-                                                        collumn_no_semicolon();
+                                                        yylval.data.line = line;
+                                                        yylval.data.column = column;
+                                                        column_no_semicolon();
                                                         if(tag == L_TAG)printf("BOOL\n");
                                                         return BOOL;
                                                         }
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 208 "gocompiler.l"
+#line 270 "gocompiler.l"
 {
-                                                        collumn_no_semicolon();
+                                                        yylval.data.line = line;
+                                                        yylval.data.column = column;
+                                                        column_no_semicolon();
                                                         if(tag == L_TAG)printf("STRING\n");
                                                         return STRING;
                                                         }
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 213 "gocompiler.l"
+#line 277 "gocompiler.l"
 {
-                                                        collumn_no_semicolon();
+                                                        yylval.data.line = line;
+                                                        yylval.data.column = column;
+                                                        column_no_semicolon();
                                                         if(tag == L_TAG)printf("PRINT\n");
                                                         return PRINT;
                                                         }
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 218 "gocompiler.l"
+#line 284 "gocompiler.l"
 {
-                                                        collumn_no_semicolon();
+                                                        yylval.data.line = line;
+                                                        yylval.data.column = column;
+                                                        column_no_semicolon();
                                                         if(tag == L_TAG)printf("PARSEINT\n");
                                                         return PARSEINT;
                                                         }
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 223 "gocompiler.l"
+#line 291 "gocompiler.l"
 {
-                                                        collumn_no_semicolon();
+                                                        yylval.data.line = line;
+                                                        yylval.data.column = column;
+                                                        column_no_semicolon();
                                                         if(tag == L_TAG)printf("FUNC\n");
                                                         return FUNC;
                                                         }
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 228 "gocompiler.l"
+#line 298 "gocompiler.l"
 {
-                                                        collumn_no_semicolon();
+                                                        yylval.data.line = line;
+                                                        yylval.data.column = column;
+                                                        column_no_semicolon();
                                                         if(tag == L_TAG)printf("CMDARGS\n");
                                                         return CMDARGS;
                                                         }
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
-#line 233 "gocompiler.l"
+#line 305 "gocompiler.l"
 {
-                                                        collumn_no_semicolon();
+                                                        yylval.data.line = line;
+                                                        yylval.data.column = column;
+                                                        column_no_semicolon();
                                                         if(tag == L_TAG)printf("ASSIGN\n");
                                                         return ASSIGN;
                                                         }
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 238 "gocompiler.l"
+#line 312 "gocompiler.l"
 {
-                                                        collumn_no_semicolon();
+                                                        yylval.data.line = line;
+                                                        yylval.data.column = column;
+                                                        column_no_semicolon();
                                                         if(tag == L_TAG)printf("GT\n");
                                                         return GT;
                                                         }
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 243 "gocompiler.l"
+#line 319 "gocompiler.l"
 {
-                                                        collumn_no_semicolon();
+                                                        yylval.data.line = line;
+                                                        yylval.data.column = column;
+                                                        column_no_semicolon();
                                                         if(tag == L_TAG)printf("LT\n");
                                                         return LT;
                                                         }
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
-#line 248 "gocompiler.l"
+#line 326 "gocompiler.l"
 {BEGIN COMMENT_BLOCK;
-                                    temp_collumn = 0 + yyleng;
+                                    temp_column = 0 + yyleng;
                                     temp_line = 0;
                                     }
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
-#line 252 "gocompiler.l"
+#line 330 "gocompiler.l"
 {BEGIN 0;
                                     line += temp_line;
-                                    collumn += temp_collumn + yyleng;
+                                    column += temp_column + yyleng;
                                     }
 	YY_BREAK
 case 42:
 /* rule 42 can match eol */
 YY_RULE_SETUP
-#line 256 "gocompiler.l"
+#line 334 "gocompiler.l"
 {if(tag == L_TAG)put_semicolon();
                                     temp_line++;
-                                    temp_collumn = 1;
-                                    temp_collumn += yyleng;
+                                    temp_column = 1;
+                                    temp_column += yyleng;
                                     if(semicolon == NEED_S){
                                         semicolon = NO_NEED;
+                                        yylval.data.line = line;
+                                        yylval.data.column = column;
                                         return SEMICOLON;
                                     }
                                     }
 	YY_BREAK
 case YY_STATE_EOF(COMMENT_BLOCK):
-#line 265 "gocompiler.l"
-{printf("Line %d, column %d: unterminated comment\n", line, collumn); return 0;}                                  
+#line 345 "gocompiler.l"
+{printf("Line %d, column %d: unterminated comment\n", line, column); return 0;}                                  
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
-#line 266 "gocompiler.l"
-{temp_collumn+=yyleng;}
+#line 346 "gocompiler.l"
+{temp_column+=yyleng;}
 	YY_BREAK
 case 44:
 YY_RULE_SETUP
-#line 269 "gocompiler.l"
-{string_pos = 0;BEGIN STRING_STATE;string_buff[string_pos++] = '"';string_buff[string_pos] = '\0';temp_collumn=0 + yyleng;}
+#line 349 "gocompiler.l"
+{yylval.data.line = line;yylval.data.column = column;string_pos = 0;BEGIN STRING_STATE;string_buff[string_pos++] = '"';string_buff[string_pos] = '\0';temp_column=0 + yyleng;}
 	YY_BREAK
 case 45:
 YY_RULE_SETUP
-#line 271 "gocompiler.l"
+#line 351 "gocompiler.l"
 {
                                                             BEGIN 0;
-                                                            collumn += temp_collumn + yyleng;
+                                                            column += temp_column + yyleng;
                                                             semicolon = NEED_S;
                                                             string_buff[string_pos++] = '"';
                                                             string_buff[string_pos] = '\0';
                                                             if(tag == L_TAG) printf("STRLIT(%s)\n", string_buff);
-                                                           
                                                             yytext = string_buff;
-                                                            yylval.string = strdup(yytext);
+                                                            yylval.data.string = strdup(yytext);
                                                             return STRLIT;
                                                             }
 	YY_BREAK
 case 46:
 /* rule 46 can match eol */
 YY_RULE_SETUP
-#line 284 "gocompiler.l"
-{BEGIN 0; string_buff[string_pos] = 0; printf("Line %d, column %d: unterminated string literal\n", line, collumn);collumn_no_semicolon();line++;collumn = 1;}
+#line 363 "gocompiler.l"
+{BEGIN 0; string_buff[string_pos] = 0; printf("Line %d, column %d: unterminated string literal\n", line, column);column_no_semicolon();line++;column = 1;}
 	YY_BREAK
 case 47:
 YY_RULE_SETUP
-#line 285 "gocompiler.l"
-{string_buff[string_pos++] = yytext[0];string_buff[string_pos++] = yytext[1]; string_buff[string_pos] = 0;temp_collumn+= 2;}
+#line 364 "gocompiler.l"
+{string_buff[string_pos++] = yytext[0];string_buff[string_pos++] = yytext[1]; string_buff[string_pos] = 0;temp_column+= 2;}
 	YY_BREAK
 case 48:
 YY_RULE_SETUP
-#line 286 "gocompiler.l"
-{BEGIN STRING_ERROR;printf("Line %d, column %d: invalid escape sequence (%s)\n", line, collumn + temp_collumn, yytext);temp_collumn+=yyleng;semicolon = NO_NEED;}
+#line 365 "gocompiler.l"
+{BEGIN STRING_ERROR;printf("Line %d, column %d: invalid escape sequence (%s)\n", line, column + temp_column, yytext);temp_column+=yyleng;semicolon = NO_NEED;}
 	YY_BREAK
 case YY_STATE_EOF(STRING_STATE):
-#line 287 "gocompiler.l"
-{printf("Line %d, column %d: unterminated string literal\n", line, collumn);BEGIN 0; collumn += temp_collumn + yyleng;}
+#line 366 "gocompiler.l"
+{printf("Line %d, column %d: unterminated string literal\n", line, column);BEGIN 0; column += temp_column + yyleng;}
 	YY_BREAK
 case 49:
 YY_RULE_SETUP
-#line 288 "gocompiler.l"
-{string_buff[string_pos++] = yytext[0]; string_buff[string_pos] = 0;temp_collumn+= yyleng;}
+#line 367 "gocompiler.l"
+{string_buff[string_pos++] = yytext[0]; string_buff[string_pos] = 0;temp_column+= yyleng;}
 	YY_BREAK
 case 50:
 /* rule 50 can match eol */
 YY_RULE_SETUP
-#line 291 "gocompiler.l"
-{BEGIN 0;  string_buff[string_pos] = 0; printf("Line %d, column %d: unterminated string literal\n", line, collumn);collumn_no_semicolon();line++;collumn = 1;}
+#line 370 "gocompiler.l"
+{BEGIN 0;  string_buff[string_pos] = 0; printf("Line %d, column %d: unterminated string literal\n", line, column);column_no_semicolon();line++;column = 1;}
 	YY_BREAK
 case 51:
 YY_RULE_SETUP
-#line 292 "gocompiler.l"
-{BEGIN 0; collumn += temp_collumn + yyleng;string_buff[string_pos++] = yytext[0];}
+#line 371 "gocompiler.l"
+{BEGIN 0; column += temp_column + yyleng;string_buff[string_pos++] = yytext[0];}
 	YY_BREAK
 case 52:
 YY_RULE_SETUP
-#line 293 "gocompiler.l"
-{string_buff[string_pos++] = yytext[0];string_buff[string_pos++] = yytext[1]; string_buff[string_pos] = 0;temp_collumn+= yyleng;}
+#line 372 "gocompiler.l"
+{string_buff[string_pos++] = yytext[0];string_buff[string_pos++] = yytext[1]; string_buff[string_pos] = 0;temp_column+= yyleng;}
 	YY_BREAK
 case 53:
 YY_RULE_SETUP
-#line 294 "gocompiler.l"
-{printf("Line %d, column %d: invalid escape sequence (%s)\n", line, collumn + temp_collumn, yytext);temp_collumn+=yyleng;semicolon = NO_NEED;}
+#line 373 "gocompiler.l"
+{printf("Line %d, column %d: invalid escape sequence (%s)\n", line, column + temp_column, yytext);temp_column+=yyleng;semicolon = NO_NEED;}
 	YY_BREAK
 case YY_STATE_EOF(STRING_ERROR):
-#line 295 "gocompiler.l"
-{printf("Line %d, column %d: unterminated string literal\n", line, collumn);BEGIN 0; collumn += temp_collumn + yyleng;}
+#line 374 "gocompiler.l"
+{printf("Line %d, column %d: unterminated string literal\n", line, column);BEGIN 0; column += temp_column + yyleng;}
 	YY_BREAK
 case 54:
 YY_RULE_SETUP
-#line 296 "gocompiler.l"
-{temp_collumn+= yyleng;}
+#line 375 "gocompiler.l"
+{temp_column+= yyleng;}
 	YY_BREAK
 case 55:
 YY_RULE_SETUP
-#line 298 "gocompiler.l"
-{printf("Line %d, column %d: invalid octal constant (%s)\n", line, collumn, yytext);
-                                                                                            collumn+=yyleng;
+#line 377 "gocompiler.l"
+{printf("Line %d, column %d: invalid octal constant (%s)\n", line, column, yytext);
+                                                                                            column+=yyleng;
                                                                                             }
 	YY_BREAK
 case 56:
 YY_RULE_SETUP
-#line 301 "gocompiler.l"
+#line 380 "gocompiler.l"
 {
+                                                                                            yylval.data.line = line;
+                                                                                            yylval.data.column = column;
                                                                                             semicolon = NEED_S;
-                                                                                            collumn+=yyleng; 
+                                                                                            column+=yyleng; 
                                                                                             if(tag == L_TAG)printf("ID(%s)\n", yytext);
-                                                                                            yylval.string = strdup(yytext);
+                                                                                            yylval.data.string = strdup(yytext);
                                                                                             return ID;
                                                                                             }
 	YY_BREAK
 case 57:
 YY_RULE_SETUP
-#line 308 "gocompiler.l"
+#line 389 "gocompiler.l"
 {
-                                                                                                                            collumn+=yyleng;
+                                                                                                                            yylval.data.line = line;
+                                                                                                                            yylval.data.column = column;
+                                                                                                                            column+=yyleng;
                                                                                                                             semicolon = NEED_S;
                                                                                                                             if(tag == L_TAG)printf("REALLIT(%s)\n", yytext);
-                                                                                                                            yylval.string = strdup(yytext);
+                                                                                                                            yylval.data.string = strdup(yytext);
                                                                                                                             return REALLIT; //TODO
                                                                                                                             }
 	YY_BREAK
 case 58:
 YY_RULE_SETUP
-#line 315 "gocompiler.l"
+#line 398 "gocompiler.l"
 {
-                                                                                collumn+=yyleng;
+                                                                                yylval.data.line = line;
+                                                                                yylval.data.column = column;
+                                                                                column+=yyleng;
                                                                                 semicolon = NEED_S;
                                                                                 if(tag == L_TAG)printf("INTLIT(%s)\n", yytext);
-                                                                                yylval.string = strdup(yytext);
+                                                                                yylval.data.string = strdup(yytext);
                                                                                 return INTLIT; //TODO
                                                                                 }
 	YY_BREAK
 case YY_STATE_EOF(INITIAL):
-#line 322 "gocompiler.l"
+#line 407 "gocompiler.l"
 {
                                                                                 if(tag == L_TAG) put_semicolon();
                                                                                 if(semicolon == NEED_S){
                                                                                     semicolon = NO_NEED;
+                                                                                    yylval.data.line = line;
+                                                                                    yylval.data.column = column;
                                                                                     return SEMICOLON; 
 
                                                                                 }
@@ -1470,58 +1557,62 @@ case YY_STATE_EOF(INITIAL):
 case 59:
 /* rule 59 can match eol */
 YY_RULE_SETUP
-#line 332 "gocompiler.l"
+#line 419 "gocompiler.l"
 {
-                                                                                temp_collumn = collumn;
-                                                                                collumn=1;
+                                                                                yylval.data.line = line;
+                                                                                yylval.data.column = column;
+                                                                                temp_column = column;
+                                                                                column=1;
                                                                                 line++;
                                                                                 if(tag == L_TAG)put_semicolon();
                                                                                 
                                                                                 if(semicolon == NEED_S){
-                                                                                    semicolon = NO_NEED;
-                                                                                    return SEMICOLON;
+                                                                                semicolon = NO_NEED;
+                                                                                return SEMICOLON;
                                                                                 }
                                                                                 }
 	YY_BREAK
 case 60:
 YY_RULE_SETUP
-#line 343 "gocompiler.l"
+#line 432 "gocompiler.l"
 {
-                                                                                collumn+=yyleng;
+                                                                                yylval.data.line = line;
+                                                                                yylval.data.column = column;
+                                                                                column+=yyleng;
                                                                                 if(tag == L_TAG)put_semicolon();
                                                                                 if(semicolon == NEED_S){
-                                                                                    semicolon = NO_NEED;
-                                                                                    return SEMICOLON;
+                                                                                semicolon = NO_NEED;
+                                                                                return SEMICOLON;
                                                                                 }
                                                                                 }
 	YY_BREAK
 case 61:
 YY_RULE_SETUP
-#line 351 "gocompiler.l"
-{collumn+=yyleng;}
+#line 442 "gocompiler.l"
+{column+=yyleng;}
 	YY_BREAK
 case 62:
 YY_RULE_SETUP
-#line 352 "gocompiler.l"
-{printf("Line %d, column %d: invalid escape sequence (%s)\n", line, collumn, yytext);
-                                                                                collumn+=yyleng;    
+#line 443 "gocompiler.l"
+{printf("Line %d, column %d: invalid escape sequence (%s)\n", line, column, yytext);
+                                                                                column+=yyleng;    
                                                                                 semicolon = NO_NEED;
                                                                                 }
 	YY_BREAK
 case 63:
 YY_RULE_SETUP
-#line 356 "gocompiler.l"
+#line 447 "gocompiler.l"
 {
-                                                                                printf("Line %d, column %d: illegal character (%s)\n", line, collumn, yytext);
-                                                                                collumn_no_semicolon();
+                                                                                printf("Line %d, column %d: illegal character (%s)\n", line, column, yytext);
+                                                                                column_no_semicolon();
                                                                                 }
 	YY_BREAK
 case 64:
 YY_RULE_SETUP
-#line 361 "gocompiler.l"
+#line 452 "gocompiler.l"
 ECHO;
 	YY_BREAK
-#line 1525 "lex.yy.c"
+#line 1616 "lex.yy.c"
 
 	case YY_END_OF_BUFFER:
 		{
@@ -2524,7 +2615,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 361 "gocompiler.l"
+#line 452 "gocompiler.l"
 
 
 int main(int argc, char **argv){
@@ -2548,13 +2639,23 @@ int main(int argc, char **argv){
         if(argv[1][0] == '-' && argv[1][1] == 's' && argv[1][2] == '\0'){
             tag = S_TAG;
             yyparse();
-            Table *global_table = create_tables(root);
-            print_table(global_table);
         }
     }
     else{
         yyparse();
-    } 
+    }
+
+    Table *global_table = create_tables(root);
+    int errorcount = verify_program(root, global_table);
+
+
+    if(tag == S_TAG && errorcount == 0){
+        //if(errorcount > 0)printf("\n");
+        print_table(global_table);
+        printf("\n");
+        print_noted_tree(root, 0);
+    }
+
     if(root != NULL){
         cleanTree(root);
     }
@@ -2567,8 +2668,8 @@ int yywrap(){
     return 1;
 }
 
-int collumn_no_semicolon(){
-    collumn+=yyleng;
+int column_no_semicolon(){
+    column+=yyleng;
     semicolon = NO_NEED;
     return 0;
 }
@@ -2585,9 +2686,9 @@ int put_semicolon(){
 
 void yyerror (char *s) {
     erros++;
-    int c = collumn - strlen(yytext);
+    int c = column - strlen(yytext);
     if(yytext[0] == '\n'){
-        printf ("Line %d, column %d: %s: %s\n", line - 1, temp_collumn, s, yytext);
+        printf ("Line %d, column %d: %s: %s\n", line - 1, temp_column, s, yytext);
     }
     else printf ("Line %d, column %d: %s: %s\n", line, c , s, yytext);
 }

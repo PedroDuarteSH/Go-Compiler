@@ -3,17 +3,19 @@ Adriana Bernardo 2019218086
 Pedro Henriques 2019217793
 */
 
+#define SYMBOLH
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
 #ifndef TREEH
     #include "tree.h"
 #endif
+
 #define TRUE 1
-
 #define NONE "none"
-
 #define BUFFLEN 1000
+
+
 typedef struct Parameters{
     char *id;
     char *type;
@@ -25,9 +27,13 @@ typedef struct TableElem{
     char *type;
     int is_param;
     int is_funcDecl;
+    
+    int line;
+    int column;
+    int used;
+    int declared;
     Parameters *parameters;
     struct TableElem *next;
-    struct TableElem *before;
 }TableElem;
 
 typedef struct Table{
@@ -46,9 +52,6 @@ TableElem *insert_varDecl(Table *to_insert, Node *node);
 TableElem *insert_funcDecl(Table *to_insert, Node *node);
 TableElem *insert_funcHeader(Table *to_insert, Node *node);
 TableElem *insert_paramDecl(Table *to_insert, Node *node);
-TableElem *insert_return(Table *to_insert, Node *node);
-TableElem *search(Table *current_table, char *id);
 char* get_type(char *node_type);
 void print_table(Table *table);
 void print_table_elem(TableElem *table_elem);
-void print_error(char *msg, int line, int column);
